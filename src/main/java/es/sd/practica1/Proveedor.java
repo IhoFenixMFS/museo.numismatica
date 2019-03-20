@@ -4,59 +4,75 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Proveedor {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id_proveedor;
+	private int cif;
 	
-	private int codigo_fiscal;
 	private String nombre;
-	private long direccion_postal;
-	private String email;
-	private long telefono;
+	private int cp;
+	private String mail;
+	private int tlf;
 	
-	public int getCodigo_fiscal() {
-		return codigo_fiscal;
+	//Clave Foranea bidireccional Proveedor-Ejemplares
+	@OneToOne (mappedBy = "fk_proveedor")
+	private Ejemplares fk_ejemplar;
+	
+	//Constructor generado con todos los campos de Ejemplares	
+	public Proveedor(int cif, String nombre, int cp, String mail, int tlf) {
+		super();
+		this.cif = cif;
+		this.nombre = nombre;
+		this.cp = cp;
+		this.mail = mail;
+		this.tlf = tlf;
 	}
 	
-	public void setCodigo_fiscal(int codigo_fiscal) {
-		this.codigo_fiscal = codigo_fiscal;
+	public Proveedor() {
+		super();
+		this.cif = 1;
+		this.nombre = "Lucas";
+		this.cp = 28942;
+		this.mail = "ggmalumno@urjc.es";
+		this.tlf = 654234312;
 	}
-	
+
+	//Getters y Setters automaticos de todos los atributos de la entidad	
+	public int getCif() {
+		return cif;
+	}
+	public void setCif(int cif) {
+		this.cif = cif;
+	}
 	public String getNombre() {
 		return nombre;
 	}
-	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public long getDireccion_postal() {
-		return direccion_postal;
+	public int getCp() {
+		return cp;
 	}
-	
-	public void setDireccion_postal(long direccion_postal) {
-		this.direccion_postal = direccion_postal;
+	public void setCp(int cp) {
+		this.cp = cp;
 	}
-	
-	public String getEmail() {
-		return email;
+	public String getMail() {
+		return mail;
 	}
-	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
-	
-	public long getTelefono() {
-		return telefono;
+	public int getTlf() {
+		return tlf;
 	}
-	
-	public void setTelefono(long telefono) {
-		this.telefono = telefono;
+	public void setTlf(int tlf) {
+		this.tlf = tlf;
 	}
+
 	
 	
 }
