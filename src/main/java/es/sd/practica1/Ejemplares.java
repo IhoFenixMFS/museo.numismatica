@@ -4,32 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.*;
 
 @Entity
 public class Ejemplares {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
+	private int id;	
 	private int ejemplaresDisponibles;
 	private int anoAcunacion;
 	private String ciudadAcunacion;
 	private java.sql.Date fechaAdquisicion;
-	private String estadoConservacion;	
-	private String proveedor;	
+	private String estadoConservacion;		
 	private String modelo;
-	
-	//Clave Foranea OneToOne bidireccional Ejemplares-Proveedor
-	@OneToOne
-	private Proveedor fk_proveedor;
+	private String proveedor;
 	
 	
 	//Constructor generado con todos los campos de Ejemplares
 	public Ejemplares(int id, int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			java.sql.Date fechaAdquisicion, String estadoConservacion, String proveedor) {
-		super();
 		this.id = id;
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;

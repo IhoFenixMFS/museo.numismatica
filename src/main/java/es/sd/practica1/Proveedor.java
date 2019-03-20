@@ -1,9 +1,6 @@
 package es.sd.practica1;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -12,19 +9,18 @@ public class Proveedor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cif;
-	
 	private String nombre;
 	private int cp;
 	private String mail;
 	private int tlf;
 	
-	//Clave Foranea bidireccional Proveedor-Ejemplares
-	@OneToOne (mappedBy = "fk_proveedor")
-	private Ejemplares fk_ejemplar;
+	@ManyToMany(cascade=CascadeType.ALL) 
+	@JoinTable(name="PROV_EJEM",
+	joinColumns=@JoinColumn(name="ID_PE"))
+	private Collection<Ejemplares> ejemplares;
 	
 	//Constructor generado con todos los campos de Ejemplares	
 	public Proveedor(int cif, String nombre, int cp, String mail, int tlf) {
-		super();
 		this.cif = cif;
 		this.nombre = nombre;
 		this.cp = cp;
@@ -33,7 +29,6 @@ public class Proveedor {
 	}
 	
 	public Proveedor() {
-		super();
 		this.cif = 1;
 		this.nombre = "Lucas";
 		this.cp = 28942;
@@ -72,7 +67,5 @@ public class Proveedor {
 	public void setTlf(int tlf) {
 		this.tlf = tlf;
 	}
-
-	
 	
 }

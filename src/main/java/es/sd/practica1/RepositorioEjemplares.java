@@ -12,7 +12,6 @@ public interface RepositorioEjemplares extends JpaRepository<Ejemplares, Integer
 	Ejemplares findByFechaAdquisicion (java.sql.Date fechaAdquisicion);
 	Ejemplares findByEstadoConservacion (String estadoConservacion);
 	
-	//No sabemos si poner estas 2 como claves foraneas
 	Ejemplares findByProveedor (String proveedor);
 	Ejemplares findByModelo (String Modelo);
 

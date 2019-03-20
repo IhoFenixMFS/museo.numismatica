@@ -12,8 +12,7 @@ public class Modelos {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
+	private int id;		
 	private String nombre;	
 	private float valorFacial;
 	private String unidad;
@@ -22,16 +21,15 @@ public class Modelos {
 	private String metal;
 	private String descripcion;
 	
-	//Clave Foranea OneToMany unidireccional Modelos-Ejemplares
-	@OneToMany
-	@JoinTable (name = "TABLA_AUX",
-	joinColumns = @JoinColumn (name = "FK_MODELOS"))
-	private Collection<Ejemplares> fk_ejemplares;
+	//FK de los modelos sobre la tabla ejemplares
+	@OneToMany(cascade=CascadeType.ALL) //Unidireccional
+	@JoinTable(name = "MOD_EJEM", 
+	joinColumns=@JoinColumn(name="ID_ME"))
+	private Collection<Ejemplares> ejemplares;	
 
 	//Constructor generado con todos los campos de Ejemplares		
 	public Modelos(int id, String nombre, float valorFacial, String unidad, int diametro, float peso, String metal,
 			String descripcion) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.valorFacial = valorFacial;
@@ -91,8 +89,6 @@ public class Modelos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
 	
 }
 	

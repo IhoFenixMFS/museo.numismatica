@@ -24,7 +24,7 @@ public class TablonController {
 	//Ejemplo Utilizacion de los metodos del repositorio
 	@RequestMapping("/")
 	public String tablon(Model model) {
-  		model.addAttribute("hola", repProveedor.findByTLF(654234312));
+  		model.addAttribute("hola", repProveedor.findByTlf(654234312));
   		return "tablon";
   	}
 	
