@@ -14,10 +14,10 @@ public class Modelos {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;		
 	private String nombre;	
-	private float valorFacial;
+	private double valorFacial;
 	private String unidad;
 	private int diametro;
-	private float peso;
+	private double peso;
 	private String metal;
 	private String descripcion;
 	
@@ -28,7 +28,7 @@ public class Modelos {
 	private Collection<Ejemplares> ejemplares;	
 
 	//Constructor generado con todos los campos de Ejemplares		
-	public Modelos(int id, String nombre, float valorFacial, String unidad, int diametro, float peso, String metal,
+	public Modelos(int id, String nombre, double valorFacial, String unidad, int diametro, double peso, String metal,
 			String descripcion) {
 		this.id = id;
 		this.nombre = nombre;
@@ -38,6 +38,14 @@ public class Modelos {
 		this.peso = peso;
 		this.metal = metal;
 		this.descripcion = descripcion;
+	}
+	
+	public Modelos(int id, String nombre, String unidad,double peso, String metal) {
+		this.id = id;
+		this.nombre = nombre;
+		this.unidad = unidad;
+		this.peso = peso;
+		this.metal = metal;
 	}
 	
 	//Getters y Setters automaticos de todos los atributos de la entidad		
@@ -53,10 +61,10 @@ public class Modelos {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public float getValorFacial() {
+	public double getValorFacial() {
 		return valorFacial;
 	}
-	public void setValorFacial(float valorFacial) {
+	public void setValorFacial(double valorFacial) {
 		this.valorFacial = valorFacial;
 	}
 	public String getUnidad() {
@@ -71,10 +79,10 @@ public class Modelos {
 	public void setDiametro(int diametro) {
 		this.diametro = diametro;
 	}
-	public float getPeso() {
+	public double getPeso() {
 		return peso;
 	}
-	public void setPeso(float peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 	public String getMetal() {

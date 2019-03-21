@@ -3,7 +3,7 @@ package es.sd.practica1;
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RepositorioProveedor extends JpaRepository<Proveedor, Integer> {
+public interface RepositorioProveedor extends JpaRepository<Proveedor, String> {
 
 	Proveedor findByNombre (String nombre);
 	Proveedor findByCp (int cp);

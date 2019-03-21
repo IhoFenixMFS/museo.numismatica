@@ -8,7 +8,7 @@ public class Proveedor {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int cif;
+	private String cif;
 	private String nombre;
 	private int cp;
 	private String mail;
@@ -19,8 +19,8 @@ public class Proveedor {
 	joinColumns=@JoinColumn(name="ID_PE"))
 	private Collection<Ejemplares> ejemplares;
 	
-	//Constructor generado con todos los campos de Ejemplares	
-	public Proveedor(int cif, String nombre, int cp, String mail, int tlf) {
+	//Constructores
+	public Proveedor(String cif, String nombre, int cp, String mail, int tlf) {
 		this.cif = cif;
 		this.nombre = nombre;
 		this.cp = cp;
@@ -28,19 +28,20 @@ public class Proveedor {
 		this.tlf = tlf;
 	}
 	
-	public Proveedor() {
-		this.cif = 1;
-		this.nombre = "Lucas";
-		this.cp = 28942;
-		this.mail = "ggmalumno@urjc.es";
-		this.tlf = 654234312;
+	public Proveedor(String cif, String nombre) {
+		this.cif = cif;
+		this.nombre = nombre;
 	}
+	
+	public Proveedor() {
+	}
+	
 
 	//Getters y Setters automaticos de todos los atributos de la entidad	
-	public int getCif() {
+	public String getCif() {
 		return cif;
 	}
-	public void setCif(int cif) {
+	public void setCif(String cif) {
 		this.cif = cif;
 	}
 	public String getNombre() {
