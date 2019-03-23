@@ -11,8 +11,9 @@ import javax.persistence.*;
 public class Modelos {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;		
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_modelos;		
+	
 	private String nombre;	
 	private double valorFacial;
 	private String unidad;
@@ -28,9 +29,8 @@ public class Modelos {
 	private Collection<Ejemplares> ejemplares;	
 
 	//Constructor generado con todos los campos de Ejemplares		
-	public Modelos(int id, String nombre, double valorFacial, String unidad, int diametro, double peso, String metal,
+	public Modelos(String nombre, double valorFacial, String unidad, int diametro, double peso, String metal,
 			String descripcion) {
-		this.id = id;
 		this.nombre = nombre;
 		this.valorFacial = valorFacial;
 		this.unidad = unidad;
@@ -40,8 +40,15 @@ public class Modelos {
 		this.descripcion = descripcion;
 	}
 	
-	public Modelos(int id, String nombre, String unidad,double peso, String metal) {
-		this.id = id;
+	public Modelos(String nombre, String unidad,int diametro, double peso, String metal) {
+		this.nombre = nombre;
+		this.unidad = unidad;
+		this.diametro = diametro;
+		this.peso = peso;
+		this.metal = metal;
+	}
+	
+	public Modelos(String nombre, String unidad,double peso, String metal) {
 		this.nombre = nombre;
 		this.unidad = unidad;
 		this.peso = peso;
@@ -49,11 +56,11 @@ public class Modelos {
 	}
 	
 	//Getters y Setters automaticos de todos los atributos de la entidad		
-	public int getId() {
-		return id;
+	public int getId_modelos() {
+		return id_modelos;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId_modelos(int id) {
+		this.id_modelos = id;
 	}
 	public String getNombre() {
 		return nombre;

@@ -2,8 +2,6 @@ package es.sd.practica1;
 
 import java.sql.Date;
 import java.text.DateFormat;
-import java.text.ParseException;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +11,9 @@ import javax.persistence.Id;
 public class Ejemplares {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_ejemplares;
+	
 	private int ejemplaresDisponibles;
 	private int anoAcunacion;
 	private String ciudadAcunacion;
@@ -24,9 +23,8 @@ public class Ejemplares {
 	private String proveedor;
 
 	// Constructor generado con todos los campos de Ejemplares
-	public Ejemplares(int id, int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			java.sql.Date fechaAdquisicion, String estadoConservacion, String proveedor) {
-		this.id = id;
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
@@ -36,7 +34,7 @@ public class Ejemplares {
 		this.proveedor = proveedor;
 	}
 
-	public Ejemplares(int id, int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			String fecha, String proveedor)  {
 		Date d=null;
 		DateFormat df = DateFormat.getDateInstance();
@@ -46,7 +44,6 @@ public class Ejemplares {
 			
 		}
 		
-		this.id = id;
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
@@ -59,12 +56,12 @@ public class Ejemplares {
 	}
 
 	// Getters y Setters automaticos de todos los atributos de la entidad
-	public int getId() {
-		return id;
+	public int getId_ejemplares() {
+		return id_ejemplares;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_ejemplares(int id) {
+		this.id_ejemplares = id;
 	}
 
 	public int getEjemplaresDisponibles() {

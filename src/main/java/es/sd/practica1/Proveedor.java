@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Proveedor {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String cif;
 	private String nombre;
 	private int cp;
