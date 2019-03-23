@@ -1,15 +1,29 @@
-body {
-  padding-top: 5rem;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
 
-h1{
-	color:#0000FF;
-}
+	<title> Ejemplo con CSS </title>
 
-h2{
-	color:#FF0000;
-}
+	<link rel="stylesheet" type="text/css"
+
+	href="../static.css/estilos.css"
+
+	th:href="@{/static.css/main.css}"/>
+
+</head>
+	body {
+  		padding-top: 5rem;
+	}
+	
+	.starter-template {
+ 		 padding: 3rem 1.5rem;
+ 		 text-align: center;
+	}
+
+	h1{
+		color:#0000FF;
+	}
+
+	h2{
+		color:#FF0000;
+	}
+</html>

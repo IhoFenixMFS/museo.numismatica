@@ -1,24 +1,76 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://localhost:8080/home">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Museo Numismatica</title>
-
-    <!-- link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/main.css}"/-->
+    <!--  link rel="stylesheet" th:href="@{/static.css/main.css}"/-->
 
 </head>
 
 <body>
+    
+    <div>
+        <h2>Museo Numismatica</h2>
+        
+		<p>Se debe poder añadir, modificar y consultar en la base de Datos ya lista.</p>
+	</div>
 
-	<div>
-    	<h1>Museo GonMir</h1>
-        <h2>
-            <span th:text="Mininaaaa"></span>
-        </h2>
+<!-- PLANTILLA PARA EL FORMULARIO
+
+<form th:action="@{/user/create}" th:object="${usuario}" method="post">
+    <fieldset>
+        <legend>Datos del usuario</legend>
+        <table>
+            <tr>
+                <td><label th:text="#{form.user.nombre}">Nombre: </label></td>
+                <td><input type="text" th:field="*{nombre}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="#{form.user.apellido}">Apellido: </label></td>
+                <td><input type="text" th:field="*{apellido}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="#{form.user.correo}">Correo: </label></td>
+                <td><input type="text" th:field="*{correo}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="#{form.user.pass}">Password: </label></td>
+                <td><input type="password" th:field="*{password}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="#{form.user.edad}">Edad: </label></td>
+                <td><input type="number" th:field="*{edad}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="#{form.user.sexo}">Sexo: </label></td>
+                <td><input type="checkbox" th:field="*{sexo}" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Registrar...</button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form -->
+
+
+<!-- FORMULARIO PARA VALIDAR LOS ERRORES EN LOS CAMPOS DE LA APLICACION
+
+<form th:action="@{/user/create}" th:object="${usuario}" method="post">
+
+    <div class="errorblock" th:if="${#fields.hasErrors('*')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}"
+                th:text="${err}">Input is incorrect</li>
+        </ul>
     </div>
+
+</form -->
+    
     
 </body>
 </html>

@@ -24,22 +24,12 @@ public class Ejemplares {
 
 	// Constructor generado con todos los campos de Ejemplares
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
-			java.sql.Date fechaAdquisicion, String estadoConservacion, String proveedor) {
-		this.ejemplaresDisponibles = ejemplaresDisponibles;
-		this.modelo = modelo;
-		this.anoAcunacion = anoAcunacion;
-		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = fechaAdquisicion;
-		this.estadoConservacion = estadoConservacion;
-		this.proveedor = proveedor;
-	}
-
-	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
-			String fecha, String proveedor)  {
-		Date d=null;
+			String fechaAdquisicion, String estadoConservacion, String proveedor) {
+		
+		Date fechasql = null;
 		DateFormat df = DateFormat.getDateInstance();
 		try {
-			d= (Date) df.parse(fecha);
+			fechasql = (Date) df.parse(fechaAdquisicion);
 		} catch (Exception e) {
 			
 		}
@@ -48,7 +38,27 @@ public class Ejemplares {
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
 		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = d;
+		this.fechaAdquisicion = fechasql;
+		this.estadoConservacion = estadoConservacion;
+		this.proveedor = proveedor;
+	}
+
+	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+			String fechaAdquisicion, String proveedor)  {
+		
+		Date fechasql = null;
+		DateFormat df = DateFormat.getDateInstance();
+		try {
+			fechasql = (Date) df.parse(fechaAdquisicion);
+		} catch (Exception e) {
+			
+		}
+		
+		this.ejemplaresDisponibles = ejemplaresDisponibles;
+		this.modelo = modelo;
+		this.anoAcunacion = anoAcunacion;
+		this.ciudadAcunacion = ciudadAcunacion;
+		this.fechaAdquisicion = fechasql;
 		this.proveedor = proveedor;
 	}
 

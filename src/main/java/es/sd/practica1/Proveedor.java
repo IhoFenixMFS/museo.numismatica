@@ -32,6 +32,13 @@ public class Proveedor {
 		this.nombre = nombre;
 	}
 	
+	public Proveedor(String cif, String nombre, int cp, int tlf) {
+		this.cif = cif;
+		this.nombre = nombre;
+		this.cp = cp;
+		this.tlf = tlf;
+	}
+	
 	public Proveedor() {
 	}
 	
