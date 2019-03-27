@@ -1,10 +1,14 @@
 package es.sd.practica1;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class TablonController {
@@ -45,9 +49,30 @@ public class TablonController {
 	public String base(Model model) {
 		model.addAttribute("proveedor", repProveedor.findAll());
 		model.addAttribute("modelo", new Modelos("Doblón español", "doblón", 6.77, "oro"));
-		return "Formulario";
+		return "Principal";
 	}
+	
+	@RequestMapping("/consultar")
+	public String consultar(@RequestParam String nombre,  Model model) {
 
+		model.addAttribute("proveedor", repProveedor.findByNombre(nombre));
+		return "Consultar";
+	}
+	
+	@RequestMapping("/modificar")
+	public String modificar(Model model) {
+	
+		return "Modificar";
+	}
+	
+	@RequestMapping("/insertar")
+	public String insertar(Model model, Proveedor proveedor) {
+		
+		repProveedor.save(proveedor);
+		return "Insertar";
+	}
+	
+    /*
 	@RequestMapping("/home")
 	public String home(Model model) {
 		return base(model);
@@ -59,7 +84,7 @@ public class TablonController {
 		return base(model);
 	}
 	
-	
+	*/
 	
     //PLANTILLA DEL CONTROLADOR DEL FORMULARIO
 	//Hay que configurarlo con nuestro proyecto en base a el siguiente ejemplo controlador
