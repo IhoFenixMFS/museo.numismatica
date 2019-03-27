@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Consulta</title>
+<link rel="stylesheet" type="text/css" href="main.css"/>
+
+</head>
+<body>
+<h1>Proveedor</h1>
+	<p>
+		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>
+		<span th:text="'Asunto:' + ${proveedor.cif}" /> <br/>
+	</p>
+
+
+
+	<a href="/">Volver</a>
+</body>
+</html>
