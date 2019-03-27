@@ -56,7 +56,7 @@ public class TablonController {
 	@RequestMapping("/*")
 	public String pruebas(Model model) {
 
-		return base(model);
+		return "index";
 	}
 	
 	
