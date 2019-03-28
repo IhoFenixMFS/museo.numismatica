@@ -1,21 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Consulta</title>
-<link rel="stylesheet" type="text/css" href="main.css"/>
 
-</head>
+ <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
-<h1>Proveedor</h1>
-	<p>
-		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>
-		<span th:text="'Asunto:' + ${proveedor.cif}" /> <br/>
-	</p>
 
+	<p>Consultar</p>
+	<form action="/" method="post">
+		<div class="btn-group">
+		  <button class="button">Volver</button>
+		</div>
+	</form>
+	
+	<form action="/ConsultarProveedor.html" method="post">
+		<div class="btn-group">
+		  <button class="button">Proveedor</button>
+		</div>
+	</form>
+	
+	<form action="/ConsultarModelo.html" method="post">
+		<div class="btn-group">
+		  <button class="button">Modelo</button>
+		</div>
+	</form>
+	
+	<form action="/ConsultarEjemplar.html" method="post">
+		<div class="btn-group">
+		  <button class="button">Ejemplar</button>
+		</div>
+	</form>
 
-
-	<a href="/">Volver</a>
 </body>
 </html>
