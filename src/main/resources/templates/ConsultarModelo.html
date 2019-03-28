@@ -3,8 +3,18 @@
  <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
 
-	<p>Consultar Modelo</p>
-	<form action="/" method="post">
+	<h1>Consultar Modelos</h1>
+	<p th:each="modelo : ${modelos}">
+		<span th:text="'ID:' + ${modelo.id_modelos}" /> <br/>
+		<span th:text="'Nombre:' + ${modelo.nombre}" /> <br/>
+		<span th:text="'Valor Facial:' + ${modelo.valorFacial}" /> <br/>
+		<span th:text="'Unidad:' + ${modelo.unidad}" /> <br/>
+		<span th:text="'Diametro:' + ${modelo.diametro}" /> <br/>
+		<span th:text="'Peso:' + ${modelo.peso}" /> <br/>
+		<span th:text="'Metal:' + ${modelo.metal}" /> <br/>
+		<span th:text="'Descripcion:' + ${modelo.descripcion}" /> <br/>
+	</p>
+	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
 		</div>

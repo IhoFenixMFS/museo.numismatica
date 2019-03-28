@@ -1,10 +1,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
+<meta charset="utf-8">
  <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
 
-	<p>Consultar Modelo</p>
-	<form action="/" method="post">
+	<h1>Consultar Ejemplares</h1>
+	<p th:each="ejemplar : ${ejemplares}">
+		<span th:text="'ID:' + ${ejemplar.id_ejemplares}" /> <br/>
+		<span th:text="'Ejemplares disponibles:' + ${ejemplar.ejemplaresDisponibles}" /> <br/>
+		<span th:text="'Año Acuñación:' + ${ejemplar.anoAcunacion}" /> <br/>
+		<span th:text="'Fecha de adquisición:' + ${ejemplar.fechaAdquisicion}" /> <br/>
+		<span th:text="'Estado de Conservación:' + ${ejemplar.estadoConservacion}" /> <br/>
+		<span th:text="'Modelo:' + ${ejemplar.modelo}" /> <br/>
+		<span th:text="'Proveedor:' + ${ejemplar.proveedor}" /> <br/>
+	</p>
+	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
 		</div>

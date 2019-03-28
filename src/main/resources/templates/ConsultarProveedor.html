@@ -3,8 +3,16 @@
  <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
 
-	<p>Consultar Proveedor</p>
-	<form action="/" method="post">
+	<h1>Consultar Proveedor</h1>
+	<p th:each="proveedor : ${proveedores}">
+		<span th:text="'CIF:' + ${proveedor.cif}" /> <br/>
+		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>
+		<span th:text="'CP:' + ${proveedor.cp}" /> <br/>
+		<span th:text="'Mail:' + ${proveedor.mail}" /> <br/>
+		<span th:text="'Telefono:' + ${proveedor.tlf}" /> <br/>
+	</p>
+	
+	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
 		</div>
