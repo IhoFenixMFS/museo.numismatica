@@ -53,9 +53,9 @@ public class TablonController {
 	}
 	
 	@RequestMapping("/consultar")
-	public String consultar(@RequestParam String nombre,  Model model) {
+	public String consultar(Model model) {
 
-		model.addAttribute("proveedor", repProveedor.findByNombre(nombre));
+
 		return "Consultar";
 	}
 	
@@ -68,9 +68,73 @@ public class TablonController {
 	@RequestMapping("/insertar")
 	public String insertar(Model model, Proveedor proveedor) {
 		
-		repProveedor.save(proveedor);
+		
 		return "Insertar";
 	}
+	
+	@RequestMapping("/consultarProveedor")
+	public String consultarProveedor(Model model) {
+		
+		model.addAttribute("proveedores", repProveedor.findAll());
+		
+		return "ConsultarProveedor";
+	}
+	
+	@RequestMapping("/consultarModelo")
+	public String consultarModelo(Model model) {
+		model.addAttribute("modelos", repModelos.findAll());
+		
+		return "ConsultarModelo";
+	}
+	
+	@RequestMapping("/consultarEjemplar")
+	public String consultarEjemplar(Model model) {
+		model.addAttribute("ejemplares", repEjemplares.findAll());
+		
+		return "ConsultarEjemplar";
+	}
+	
+	@RequestMapping("/insertarProveedor")
+	public String insertarProveedor(Model model, Proveedor proveedor) {
+		
+		
+		return "InsertarProveedor";
+	}
+	
+	@RequestMapping("/insertarModelo")
+	public String insertarModelo(Model model, Proveedor proveedor) {
+		
+		
+		return "InsertarModelo";
+	}
+	
+	@RequestMapping("/insertarEjemplar")
+	public String insertarEjemplar(Model model, Proveedor proveedor) {
+		
+		
+		return "InsertarEjemplar";
+	}
+	
+	@RequestMapping("/modificarProveedor")
+	public String modificarProveedor(Model model, Proveedor proveedor) {
+		
+		
+		return "ModificarProveedor";
+	}
+	
+	@RequestMapping("/modificarModelo")
+	public String modificarModelo(Model model, Proveedor proveedor) {
+		
+		
+		return "ModificarModelo";
+	}
+	
+	@RequestMapping("/modificarEjemplar")
+	public String modificarEjemplar(Model model, Proveedor proveedor) {
+		
+		return "ModificarEjemplar";
+	}
+	
 	
     /*
 	@RequestMapping("/home")
