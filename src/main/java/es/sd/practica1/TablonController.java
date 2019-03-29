@@ -53,10 +53,28 @@ public class TablonController {
 		return base(model);
 	}
 
-	@RequestMapping("/*")
-	public String pruebas(Model model) {
+	@RequestMapping("/Consultar")
+	public String consult(Model model) {
 
-		return "index";
+		return "Consultar";
+	}
+	
+	@RequestMapping("/Insertar")
+	public String insert(Model model) {
+
+		return "Insertar";
+	}
+	
+	@RequestMapping("/Modificar")
+	public String mod(Model model) {
+
+		return "Modificar";
+	}
+	
+	@RequestMapping("/Principal")
+	public String principal(Model model) {
+
+		return "Principal";
 	}
 	
 	

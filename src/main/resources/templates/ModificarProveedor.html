@@ -3,11 +3,27 @@
  <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
 
-	<p>Modificar Proveedor</p>
-	<form action="/" method="post">
-		<div class="btn-group">
-		  <button class="button">Volver</button>
-		</div>
+	<h1>Modificar Proveedor</h1>
+	
+	<p>Rellena los campos que deseas modificar</p>
+	<form action="/insertar" method="post">
+		<p>
+			<b>CIF:</b> <input type='text' name='cif' />
+		</p>
+
+		<p>
+			<b>Nombre:</b> <input type='text' name='nombre' />
+		</p>
+		<p>
+			<b>Código postal:</b> <input type='text' name='cp' />
+		</p>
+		<p>
+			<b>Correo electrónico:</b> <input type='text' name='mail' />
+		</p>
+		<p>
+			<b>Teléfono:</b> <input type='text' name='tlf' />
+		</p>
+		<input type='submit' name='modificar' value='Modificar' />
 	</form>
 
 </body>

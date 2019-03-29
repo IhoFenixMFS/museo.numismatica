@@ -3,11 +3,32 @@
  <link rel="stylesheet" type="text/css" href="main.css"/>
 <body>
 
-	<p>Modificar Ejemplar</p>
-	<form action="/" method="post">
-		<div class="btn-group">
-		  <button class="button">Volver</button>
-		</div>
+	<h1>Modificar Ejemplar</h1>
+	
+	<p>Rellena los campos que deseas modificar</p>
+	<form action="/modificar" method="post">
+		<p>
+			<b>Ejemplares disponibles:</b> <input type='text' name='ejemplaresDisponibles' />
+		</p>
+		<p>
+			<b>Año acuñación:</b> <input type='text' name='anoAcunacion' />
+		</p>
+		<p>
+			<b>Ciudad acuñación:</b> <input type='text' name='ciudadAcunacion' />
+		</p>
+		<p>
+			<b>Fecha de adquisición:</b> <input type='text' name='fechaAdquisicion' />
+		</p>
+		<p>
+			<b>Estado de conservación:</b> <input type='text' name='estadoConservacion' />
+		</p>
+		<p>
+			<b>Modelo:</b> <input type='text' name='modelo' />
+		</p>
+		<p>
+			<b>Proveedor:</b> <input type='text' name='proveedor' />
+		</p>
+		<input type='submit' name='modificar' value='Modificar' />
 	</form>
 
 </body>
