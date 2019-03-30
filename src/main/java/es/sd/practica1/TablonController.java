@@ -68,23 +68,26 @@ public class TablonController {
 		return "Consultar";
 	}
 	
-	//Operaciones de Consultar
-	@RequestMapping("/consultarEjemplar")
-	public String consult_ejemplar(Model modelCE) {
-
-		return "ConsultarEjemplar";
+	//Operaciones de Consultar	
+	@RequestMapping("/consultarProveedor")
+	public String consult_proveedor(Model modelCP) {
+		
+		modelCP.addAttribute("proveedor", repProveedor.findAll());
+		return "ConsultarProveedor";
 	}	
 	
 	@RequestMapping("/consultarModelo")
 	public String consult_modelo(Model modelCM) {
-
+		
+		modelCM.addAttribute("modelos", repModelos.findAll());
 		return "ConsultarModelo";
-	}	
+	}		
 	
-	@RequestMapping("/consultarProveedor")
-	public String consult_proveedor(Model modelCP) {
-
-		return "ConsultarProveedor";
+	@RequestMapping("/consultarEjemplar")
+	public String consult_ejemplar(Model modelCE) {
+			
+		modelCE.addAttribute("ejemplares", repEjemplares.findAll());
+		return "ConsultarEjemplar";
 	}	
 	
 	

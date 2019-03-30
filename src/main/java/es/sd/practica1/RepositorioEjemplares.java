@@ -14,6 +14,7 @@ public interface RepositorioEjemplares extends JpaRepository<Ejemplares, Integer
 	
 	Ejemplares findByProveedor (String proveedor);
 	Ejemplares findByModelo (String Modelo);
+	
 
 	List<Ejemplares> findByAnoAcunacionAndCiudadAcunacion (int anoAcunacion, String ciudadAcunacion); 
 

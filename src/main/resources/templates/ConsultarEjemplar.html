@@ -16,15 +16,16 @@
 
 	<h1>Consultar Ejemplares</h1>
 	
-	<p th:each="ejemplar : ${ejemplares}">
-		<span th:text="'ID:' + ${ejemplar.id_ejemplares}" /> <br/>
-		<span th:text="'Ejemplares disponibles:' + ${ejemplar.ejemplaresDisponibles}" /> <br/>
-		<span th:text="'Año Acuñación:' + ${ejemplar.anoAcunacion}" /> <br/>
-		<span th:text="'Fecha de adquisición:' + ${ejemplar.fechaAdquisicion}" /> <br/>
-		<span th:text="'Estado de Conservación:' + ${ejemplar.estadoConservacion}" /> <br/>
-		<span th:text="'Modelo:' + ${ejemplar.modelo}" /> <br/>
-		<span th:text="'Proveedor:' + ${ejemplar.proveedor}" /> <br/>
-	</p>
+	<div th:each="ejemplar : ${ejemplares}">
+		<span th:text="'ID:' + ${ejemplares.id_ejemplares}" ></span>
+		<span th:text="'Ejemplares disponibles:' + ${ejemplares.ejemplaresDisponibles}" ></span>
+		<span th:text="'Año Acuñación:' + ${ejemplares.anoAcunacion}" ></span>
+		<span th:text="'Ciudad Acuñación:' + ${ejemplares.ciudadAcunacion}" ></span>
+		<span th:text="'Fecha de adquisición:' + ${ejemplares.fechaAdquisicion}" ></span>
+		<span th:text="'Estado de Conservación:' + ${ejemplares.estadoConservacion}" ></span>
+		<span th:text="'Modelo:' + ${ejemplares.modelo}" ></span>
+		<span th:text="'Proveedor:' + ${ejemplares.proveedor}" ></span>
+	</div>
 	
 	<form action="/consultar" method="post">
 		<div class="btn-group">
