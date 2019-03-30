@@ -1,9 +1,21 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
- <link rel="stylesheet" type="text/css" href="main.css"/>
+<head>
+
+	<title>Consultar Proveedor</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    
+</head>
+
 <body>
 
 	<h1>Consultar Proveedor</h1>
+	
 	<p th:each="proveedor : ${proveedores}">
 		<span th:text="'CIF:' + ${proveedor.cif}" /> <br/>
 		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>

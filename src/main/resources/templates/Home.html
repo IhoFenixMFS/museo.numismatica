@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8">
-<title>Página principal</title>
-    <link rel="stylesheet" type="text/css" href="main.css"/>
+
+	<title>Museo Numismática</title>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    
 </head>
+
 <body>
+
 	<h1>Museo Numismática</h1>
 	
 	<form action="/consultar" method="post">
@@ -27,4 +35,5 @@
 	</form>
 
 </body>
+
 </html>
