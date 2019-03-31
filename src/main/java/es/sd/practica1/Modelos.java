@@ -55,6 +55,10 @@ public class Modelos {
 		this.metal = metal;
 	}
 	
+	public Modelos() {
+		
+	}
+	
 	//Getters y Setters automaticos de todos los atributos de la entidad		
 	public int getId_modelos() {
 		return id_modelos;

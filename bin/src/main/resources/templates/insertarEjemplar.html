@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Insertar Ejemplar</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    
+</head>
+
+<body>
+
+	<h1>Insertar Ejemplar</h1>
+
+	<form action="/insertar" method="post">
+		<p>
+			<b>Ejemplares disponibles:</b> <input type='text' name='ejemplaresDisponibles' />
+		</p>
+		<p>
+			<b>Año acuñación:</b> <input type='text' name='anoAcunacion' />
+		</p>
+		<p>
+			<b>Ciudad acuñación:</b> <input type='text' name='ciudadAcunacion' />
+		</p>
+		<p>
+			<b>Fecha de adquisición:</b> <input type='text' name='fechaAdquisicion' />
+		</p>
+		<p>
+			<b>Estado de conservación:</b> <input type='text' name='estadoConservacion' />
+		</p>
+		<p>
+			<b>Modelo:</b> <input type='text' name='modelo' />
+		</p>
+		<p>
+			<b>Proveedor:</b> <input type='text' name='proveedor' />
+		</p>
+		<input type='submit' name='insertar' value='Insertar' />
+	</form>
+	
+</body>
+
+</html>

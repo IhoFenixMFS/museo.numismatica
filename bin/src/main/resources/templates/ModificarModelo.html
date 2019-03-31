@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Modificar Modelo</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    
+</head>
+
+<body>
+
+	<h1>Modificar Modelo</h1>
+	
+	<p>Rellena los campos que deseas modificar</p>
+	<form action="/modificar" method="post">
+		<p>
+			<b>Nombre:</b> <input type='text' name='nombre' />
+		</p>
+		<p>
+			<b>Valor Facial:</b> <input type='text' name='valorFacial' />
+		</p>
+		<p>
+			<b>Unidad:</b> <input type='text' name='unidad' />
+		</p>
+		<p>
+			<b>Diámetro:</b> <input type='text' name='diametro' />
+		</p>
+		<p>
+			<b>Peso:</b> <input type='text' name='peso' />
+		</p>
+		<p>
+			<b>Metal:</b> <input type='text' name='metal' />
+		</p>
+		<p>
+			<b>Descripción:</b><br />
+			<textarea name='descripcion' rows='5' cols='40'></textarea>
+		</p>
+		<input type='submit' name='modificar' value='Modificar' />
+	</form>
+
+</body>
+
+</html>

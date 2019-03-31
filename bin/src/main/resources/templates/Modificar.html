@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Modificar</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    
+</head>
+
+<body>
+
+	<h1>Modificar</h1>
+		
+	<form action="/modificarProveedor" method="post">
+		<div class="btn-group">
+		  <button class="button">Proveedor</button>
+		</div>
+	</form>
+	
+	<form action="/modificarModelo" method="post">
+		<div class="btn-group">
+		  <button class="button">Modelo</button>
+		</div>
+	</form>
+	
+	<form action="/modificarEjemplar" method="post">
+		<div class="btn-group">
+		  <button class="button">Ejemplar</button>
+		</div>
+	</form>
+	
+	<form action="/home" method="post">
+		<div class="btn-group">
+		  <button class="button">Volver</button>
+		</div>
+	</form>
+
+</body>
+
+</html>

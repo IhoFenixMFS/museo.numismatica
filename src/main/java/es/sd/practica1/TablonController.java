@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TablonController {
@@ -70,23 +71,23 @@ public class TablonController {
 	
 	//Operaciones de Consultar	
 	@RequestMapping("/consultarProveedor")
-	public String consult_proveedor(Model modelCP) {
-		
-		modelCP.addAttribute("proveedor", repProveedor.findAll());
+	public String consult_proveedor(@RequestParam(value="nombreP", required=false) String nombreP, Model modelCP) {
+	
+		modelCP.addAttribute("proveedor", repProveedor.findByNombre(nombreP));
 		return "ConsultarProveedor";
 	}	
 	
 	@RequestMapping("/consultarModelo")
-	public String consult_modelo(Model modelCM) {
+	public String consult_modelo(@RequestParam(value="nombreM", required=false) String nombreM, Model modelCM) {
 		
-		modelCM.addAttribute("modelos", repModelos.findAll());
+		modelCM.addAttribute("modelos", repModelos.findByNombre(nombreM));
 		return "ConsultarModelo";
 	}		
 	
 	@RequestMapping("/consultarEjemplar")
-	public String consult_ejemplar(Model modelCE) {
-			
-		modelCE.addAttribute("ejemplares", repEjemplares.findAll());
+	public String consult_ejemplar(@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer numEjemplares, Model modelCE) {
+
+		modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(numEjemplares));
 		return "ConsultarEjemplar";
 	}	
 	

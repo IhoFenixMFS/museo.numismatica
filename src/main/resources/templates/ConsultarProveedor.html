@@ -16,13 +16,19 @@
 
 	<h1>Consultar Proveedor</h1>
 	
-	<p th:each="proveedor : ${proveedores}">
-		<span th:text="'CIF:' + ${proveedor.cif}" /> <br/>
-		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>
-		<span th:text="'CP:' + ${proveedor.cp}" /> <br/>
-		<span th:text="'Mail:' + ${proveedor.mail}" /> <br/>
-		<span th:text="'Telefono:' + ${proveedor.tlf}" /> <br/>
-	</p>
+	<form action="/consultarProveedor">
+		<p>Introduzca el nombre de un Proveedor:</p>
+		<input type='text' name='nombreP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
+	
+	<h6 th:each="proveedor : ${proveedor}">
+		<span th:text="'CIF:' + ${proveedor.cif}"></span> <br/>
+		<span th:text="'Nombre:' + ${proveedor.nombre}"></span> <br/>
+		<span th:text="'CP:' + ${proveedor.cp}"></span> <br/>
+		<span th:text="'Mail:' + ${proveedor.mail}"></span> <br/>
+		<span th:text="'Telefono:' + ${proveedor.tlf}"></span> <br/>
+	</h6>
 	
 	<form action="/consultar" method="post">
 		<div class="btn-group">

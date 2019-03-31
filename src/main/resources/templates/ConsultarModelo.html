@@ -16,16 +16,22 @@
 
 	<h1>Consultar Modelos</h1>
 	
-	<!-- p th:each="modelo : ${modelos}">
-		<span th:text="'ID:' + ${modelo.id_modelos}" /> <br/>
-		<span th:text="'Nombre:' + ${modelo.nombre}" /> <br/>
-		<span th:text="'Valor Facial:' + ${modelo.valorFacial}" /> <br/>
-		<span th:text="'Unidad:' + ${modelo.unidad}" /> <br/>
-		<span th:text="'Diametro:' + ${modelo.diametro}" /> <br/>
-		<span th:text="'Peso:' + ${modelo.peso}" /> <br/>
-		<span th:text="'Metal:' + ${modelo.metal}" /> <br/>
-		<span th:text="'Descripcion:' + ${modelo.descripcion}" /> <br/>
-	</p-->
+	<form action="/consultarModelo">
+		<p>Introduzca el nombre de un Modelo:</p>
+		<input type='text' name='nombreM'/>
+		<input type='submit' value='Buscar'/>
+	</form>		
+	
+	<h6 th:each="modelo : ${modelos}">
+		<span th:text="'ID:' + ${modelos.id_modelos}"></span> <br/>
+		<span th:text="'Nombre:' + ${modelos.nombre}"></span> <br/> 
+		<span th:text="'Valor Facial:' + ${modelos.valorFacial}"></span> <br/>
+		<span th:text="'Unidad:' + ${modelos.unidad}"></span> <br/>
+		<span th:text="'Diametro:' + ${modelos.diametro}"></span> <br/>
+		<span th:text="'Peso:' + ${modelos.peso}"></span> <br/>
+		<span th:text="'Metal:' + ${modelos.metal}"></span> <br/>
+		<span th:text="'Descripcion:' + ${modelos.descripcion}"></span> <br/>
+	</h6>
 	
 	<form action="/consultar" method="post">
 		<div class="btn-group">
@@ -34,4 +40,5 @@
 	</form>
 
 </body>
+
 </html>

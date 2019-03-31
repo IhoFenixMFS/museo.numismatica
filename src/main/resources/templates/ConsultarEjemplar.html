@@ -15,17 +15,23 @@
 <body>
 
 	<h1>Consultar Ejemplares</h1>
+		
+	<form action="/consultarEjemplar">
+		<p>Introduzca un numero de Ejemplares:</p>
+		<input type='text' name='numEjemplares'/>
+		<input type='submit' value='Buscar'/>
+	</form>
 	
-	<div th:each="ejemplar : ${ejemplares}">
-		<span th:text="'ID:' + ${ejemplares.id_ejemplares}" ></span>
-		<span th:text="'Ejemplares disponibles:' + ${ejemplares.ejemplaresDisponibles}" ></span>
-		<span th:text="'Año Acuñación:' + ${ejemplares.anoAcunacion}" ></span>
-		<span th:text="'Ciudad Acuñación:' + ${ejemplares.ciudadAcunacion}" ></span>
-		<span th:text="'Fecha de adquisición:' + ${ejemplares.fechaAdquisicion}" ></span>
-		<span th:text="'Estado de Conservación:' + ${ejemplares.estadoConservacion}" ></span>
-		<span th:text="'Modelo:' + ${ejemplares.modelo}" ></span>
-		<span th:text="'Proveedor:' + ${ejemplares.proveedor}" ></span>
-	</div>
+	<h6 th:each="ejemplar : ${ejemplares}">
+		<span th:text="'ID:' + ${ejemplares.id_ejemplares}" ></span> <br/>
+		<span th:text="'Ejemplares disponibles:' + ${ejemplares.ejemplaresDisponibles}" ></span> <br/>
+		<span th:text="'Año Acuñación:' + ${ejemplares.anoAcunacion}" ></span> <br/>
+		<span th:text="'Ciudad Acuñación:' + ${ejemplares.ciudadAcunacion}" ></span> <br/>
+		<span th:text="'Fecha de adquisición:' + ${ejemplares.fechaAdquisicion}" ></span> <br/>
+		<span th:text="'Estado de Conservación:' + ${ejemplares.estadoConservacion}" ></span> <br/>
+		<span th:text="'Modelo:' + ${ejemplares.modelo}" ></span> <br/> 
+		<span th:text="'Proveedor:' + ${ejemplares.proveedor}" ></span> <br/>
+	</h6>
 	
 	<form action="/consultar" method="post">
 		<div class="btn-group">
@@ -34,4 +40,5 @@
 	</form>
 
 </body>
+
 </html>
