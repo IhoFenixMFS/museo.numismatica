@@ -21,17 +21,32 @@
 		<input type='text' name='nombreM'/>
 		<input type='submit' value='Buscar'/>
 	</form>		
-	
-	<h6 th:each="modelo : ${modelos}">
-		<span th:text="'ID:' + ${modelos.id_modelos}"></span> <br/>
-		<span th:text="'Nombre:' + ${modelos.nombre}"></span> <br/> 
-		<span th:text="'Valor Facial:' + ${modelos.valorFacial}"></span> <br/>
-		<span th:text="'Unidad:' + ${modelos.unidad}"></span> <br/>
-		<span th:text="'Diametro:' + ${modelos.diametro}"></span> <br/>
-		<span th:text="'Peso:' + ${modelos.peso}"></span> <br/>
-		<span th:text="'Metal:' + ${modelos.metal}"></span> <br/>
-		<span th:text="'Descripcion:' + ${modelos.descripcion}"></span> <br/>
-	</h6>
+
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>Nombre</td>
+			<td>Valor Facial</td>
+			<td>Unidad</td>
+			<td>Diametro</td>
+			<td>Peso</td>
+			<td>Metal</td>
+			
+			<td>Descripcion</td>
+		</tr>
+		<th:block th:each="modelos : ${modelos}">
+			<tr>
+				<td><span th:text="${modelos.id_modelos}"></span></td>
+				<td><span th:text="${modelos.nombre}"></span></td>
+				<td><span th:text="${modelos.valorFacial}"></span></td> 
+				<td><span th:text="${modelos.unidad}"></span></td> 
+				<td><span th:text="${modelos.diametro}"></span></td> 
+				<td><span th:text="${modelos.peso}"></span></td> 
+				<td><span th:text="${modelos.metal}"></span></td> 
+				<td><span th:text="${modelos.descripcion}"></span></td>
+			</tr>
+		</th:block>	
+	</table>
 	
 	<form action="/consultar" method="post">
 		<div class="btn-group">

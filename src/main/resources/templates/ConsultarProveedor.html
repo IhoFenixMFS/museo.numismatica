@@ -22,14 +22,25 @@
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
-	<h6 th:each="proveedor : ${proveedor}">
-		<span th:text="'CIF:' + ${proveedor.cif}"></span> <br/>
-		<span th:text="'Nombre:' + ${proveedor.nombre}"></span> <br/>
-		<span th:text="'CP:' + ${proveedor.cp}"></span> <br/>
-		<span th:text="'Mail:' + ${proveedor.mail}"></span> <br/>
-		<span th:text="'Telefono:' + ${proveedor.tlf}"></span> <br/>
-	</h6>
-	
+	<table border="1">
+		<tr>
+			<td>CIF</td>
+			<td>Nombre</td>
+			<td>CP</td>
+			<td>Mail</td>
+			<td>Telefono</td>
+		</tr>
+		<th:block th:each="proveedor : ${proveedor}">
+			<tr>
+				<td><span th:text="${proveedor.cif}"></span></td>
+				<td><span th:text="${proveedor.nombre}"></span></td>
+				<td><span th:text="${proveedor.cp}"></span></td> 
+				<td><span th:text="${proveedor.mail}"></span></td> 
+				<td><span th:text="${proveedor.tlf}"></span></td> 
+			</tr>
+		</th:block>	
+	</table>
+		
 	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>

@@ -73,21 +73,39 @@ public class TablonController {
 	@RequestMapping("/consultarProveedor")
 	public String consult_proveedor(@RequestParam(value="nombreP", required=false) String nombreP, Model modelCP) {
 	
-		modelCP.addAttribute("proveedor", repProveedor.findByNombre(nombreP));
+		if (nombreP==null || nombreP=="") {
+			modelCP.addAttribute("proveedor", repProveedor.findAll());
+		}
+		else {
+			modelCP.addAttribute("proveedor", repProveedor.findByNombre(nombreP));
+		}
+		
 		return "ConsultarProveedor";
 	}	
 	
 	@RequestMapping("/consultarModelo")
 	public String consult_modelo(@RequestParam(value="nombreM", required=false) String nombreM, Model modelCM) {
 		
-		modelCM.addAttribute("modelos", repModelos.findByNombre(nombreM));
+		if (nombreM==null || nombreM=="") {
+			modelCM.addAttribute("modelos", repModelos.findAll());
+		}		
+		else {
+			modelCM.addAttribute("modelos", repModelos.findByNombre(nombreM));
+		}
+
 		return "ConsultarModelo";
 	}		
 	
 	@RequestMapping("/consultarEjemplar")
 	public String consult_ejemplar(@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer numEjemplares, Model modelCE) {
-
-		modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(numEjemplares));
+				
+		if (numEjemplares==null || numEjemplares==0) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findAll());
+		}
+		else {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(numEjemplares));
+		}
+		
 		return "ConsultarEjemplar";
 	}	
 	
@@ -102,7 +120,8 @@ public class TablonController {
 	//Operaciones de Consultar
 	@RequestMapping("/insertarEjemplar")
 	public String insert_ejemplar(Model modelIE) {
-
+		
+		
 		return "InsertarEjemplar";
 	}
 	

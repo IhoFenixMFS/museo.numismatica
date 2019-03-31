@@ -17,28 +17,20 @@
 	<h1>Insertar Modelo</h1>
 
 	<form action="/insertar" method="post">
-		<p>
-			<b>Nombre:</b> <input type='text' name='nombre' />
-		</p>
-		<p>
-			<b>Valor Facial:</b> <input type='text' name='valorFacial' />
-		</p>
-		<p>
-			<b>Unidad:</b> <input type='text' name='unidad' />
-		</p>
-		<p>
-			<b>Diámetro:</b> <input type='text' name='diametro' />
-		</p>
-		<p>
-			<b>Peso:</b> <input type='text' name='peso' />
-		</p>
-		<p>
-			<b>Metal:</b> <input type='text' name='metal' />
-		</p>
-		<p>
-			<b>Descripción:</b><br />
-			<textarea name='descripcion' rows='5' cols='40'></textarea>
-		</p>
+		<label for="nombre">Nombre: </label>
+			<input type='text' name='nombre' placeholder='Nombre' required/><br/>
+		<label for="valorFacial">Valor Facial: </label>
+			<input type='number' name='valorFacial' placeholder='Valor facial' required/><br/>
+		<label for="unidad">Unidad: </label>
+			<input type='text' name='unidad' placeholder='Unidad: €, $, céntimo ...' required/><br/>
+		<label for="diametro">Diámetro: </label>
+			<input type='number' name='diametro' placeholder='Diámetro'/><br/>
+		<label for="peso">Peso: </label>
+			<input type='number' name='peso' placeholder='Peso'/><br/>
+		<label for="metal">Metal: </label>
+			<input type='text' name='metal' placeholder='Metal'/><br/>
+		<label for="descripcion">Descripción: </label></br>
+			<input type='text' name='descripcion' size='120' placeholder='Introduzca una descripción ....'/><br/>
 		<input type='submit' name='insertar' value='Insertar' />
 	</form>
 	
