@@ -37,6 +37,13 @@
 				<td><span th:text="${proveedor.cp}"></span></td> 
 				<td><span th:text="${proveedor.mail}"></span></td> 
 				<td><span th:text="${proveedor.tlf}"></span></td> 
+				<td>
+					<form name="cif" th:value="${proveedor.cif}" action="/modificarProveedor" method="get">
+						<div class="btn-group">
+							<button class="button">Modificar</button>
+						</div>
+					</form>
+				</td>
 			</tr>
 		</th:block>	
 	</table>

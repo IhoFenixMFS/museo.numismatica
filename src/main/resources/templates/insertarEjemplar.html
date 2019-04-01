@@ -44,11 +44,11 @@
 				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected='false'/>
 			</select><br/-->
 			
-		<label for="proveedor">Proveedor: </label>
+		<!-- label for="proveedor">Proveedor: </label>
 		
 			<select name="proveedor">
 				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
-			</select><br/>
+			</select><br/-->
 			
 		<input type='submit' name='insertar' value='Insertar'/><br/>
 				

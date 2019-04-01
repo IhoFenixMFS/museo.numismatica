@@ -16,31 +16,32 @@
 
 	<h1>Modificar Modelo</h1>
 	
-	<p>Rellena los campos que deseas modificar</p>
-	<form action="/modificar" method="post">
-		<p>
-			<b>Nombre:</b> <input type='text' name='nombre' />
-		</p>
-		<p>
-			<b>Valor Facial:</b> <input type='text' name='valorFacial' />
-		</p>
-		<p>
-			<b>Unidad:</b> <input type='text' name='unidad' />
-		</p>
-		<p>
-			<b>Diámetro:</b> <input type='text' name='diametro' />
-		</p>
-		<p>
-			<b>Peso:</b> <input type='text' name='peso' />
-		</p>
-		<p>
-			<b>Metal:</b> <input type='text' name='metal' />
-		</p>
-		<p>
-			<b>Descripción:</b><br />
-			<textarea name='descripcion' rows='5' cols='40'></textarea>
-		</p>
+	<h4>Rellena los campos que deseas modificar</h4>
+	<form action="/modificarModelo" method="post">
+	
+		<label for="nombre">Nombre: </label>
+			<input type='text' name='nombre' placeholder='Nombre'/><br/>
+			
+		<label for="valorFacial">Valor Facial: </label>
+			<input type='number' step=".01" name='valorFacial' placeholder='Valor facial'/><br/>
+			
+		<label for="unidad">Unidad: </label>
+			<input type='text' name='unidad' placeholder='Unidad: €, $, céntimo ...'/><br/>
+			
+		<label for="diametro">Diámetro: </label>
+			<input type='number' step=".01" name='diametro' placeholder='Diámetro'/><br/>
+			
+		<label for="peso">Peso: </label>
+			<input type='number' step=".01" name='peso' placeholder='Peso'/><br/>
+			
+		<label for="metal">Metal: </label>
+			<input type='text' name='metal' placeholder='Metal'/><br/>
+			
+		<label for="descripcion">Descripción: </label>
+			<input type='text' name='descripcion' size='120' placeholder='Introduzca una descripción ....'/><br/>
+			
 		<input type='submit' name='modificar' value='Modificar' />
+		
 	</form>
 
 </body>
