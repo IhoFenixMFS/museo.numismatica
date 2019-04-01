@@ -1,7 +1,8 @@
 package es.sd.practica1;
 
 import java.sql.Date;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,19 +27,20 @@ public class Ejemplares {
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			String fechaAdquisicion, String estadoConservacion, String proveedor) {
 		
-		Date fechasql = null;
-		DateFormat df = DateFormat.getDateInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date parsed = null;
 		try {
-			fechasql = (Date) df.parse(fechaAdquisicion);
-		} catch (Exception e) {
-			
-		}
-		
+			parsed = (Date) sdf.parse(fechaAdquisicion);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+	    java.sql.Date sqlfechaAdquisicion = new java.sql.Date(parsed.getTime());
+
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
 		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = fechasql;
+		this.fechaAdquisicion = sqlfechaAdquisicion;
 		this.estadoConservacion = estadoConservacion;
 		this.proveedor = proveedor;
 	}
@@ -46,19 +48,20 @@ public class Ejemplares {
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			String fechaAdquisicion, String proveedor)  {
 		
-		Date fechasql = null;
-		DateFormat df = DateFormat.getDateInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date parsed = null;
 		try {
-			fechasql = (Date) df.parse(fechaAdquisicion);
-		} catch (Exception e) {
-			
-		}
+			parsed = (Date) sdf.parse(fechaAdquisicion);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+	    java.sql.Date sqlfechaAdquisicion = new java.sql.Date(parsed.getTime());
 		
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
 		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = fechasql;
+		this.fechaAdquisicion = sqlfechaAdquisicion;
 		this.proveedor = proveedor;
 	}
 

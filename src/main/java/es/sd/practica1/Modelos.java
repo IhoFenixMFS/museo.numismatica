@@ -17,7 +17,7 @@ public class Modelos {
 	private String nombre;	
 	private double valorFacial;
 	private String unidad;
-	private int diametro;
+	private double diametro;
 	private double peso;
 	private String metal;
 	private String descripcion;
@@ -29,7 +29,7 @@ public class Modelos {
 	private Collection<Ejemplares> ejemplares;	
 
 	//Constructor generado con todos los campos de Ejemplares		
-	public Modelos(String nombre, double valorFacial, String unidad, int diametro, double peso, String metal,
+	public Modelos(String nombre, double valorFacial, String unidad, double diametro, double peso, String metal,
 			String descripcion) {
 		this.nombre = nombre;
 		this.valorFacial = valorFacial;
@@ -40,7 +40,7 @@ public class Modelos {
 		this.descripcion = descripcion;
 	}
 	
-	public Modelos(String nombre, String unidad,int diametro, double peso, String metal) {
+	public Modelos(String nombre, String unidad,double diametro, double peso, String metal) {
 		this.nombre = nombre;
 		this.unidad = unidad;
 		this.diametro = diametro;
@@ -84,10 +84,10 @@ public class Modelos {
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
-	public int getDiametro() {
+	public double getDiametro() {
 		return diametro;
 	}
-	public void setDiametro(int diametro) {
+	public void setDiametro(double diametro) {
 		this.diametro = diametro;
 	}
 	public double getPeso() {

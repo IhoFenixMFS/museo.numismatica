@@ -47,7 +47,7 @@
 		<label for="proveedor">Proveedor: </label>
 		
 			<select name="proveedor">
-				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.name}" th:text="${proveedor.name}"></option>
+				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
 			</select><br/>
 			
 		<input type='submit' name='insertar' value='Insertar'/><br/>
