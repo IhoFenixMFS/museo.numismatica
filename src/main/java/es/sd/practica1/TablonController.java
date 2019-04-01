@@ -52,13 +52,13 @@ public class TablonController {
 	@RequestMapping("/")
 	public String base(Model model) {
 
-		return "Formulario";
+		return "Home";
 	}
 
 	@RequestMapping("/home")
-	public String home(Model modelH) {
+	public String home(Model model) {
 		
-		return "Home";
+		return base(model);
 	}
 	
 	
@@ -117,25 +117,32 @@ public class TablonController {
 		return "Insertar";
 	}
 	
-	//Operaciones de Consultar
-	@RequestMapping("/insertarEjemplar")
-	public String insert_ejemplar(Model modelIE) {
+	//Operaciones de Consultar	
+	@RequestMapping("/insertarProveedor")
+	public String insert_proveedor(@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
+			@RequestParam(value="nombre", required=false) String nombre, 
+			@RequestParam(value="cp", required=false, defaultValue = "0") Integer cp, 
+			@RequestParam(value="mail", required=false) String mail, 
+			@RequestParam(value="tlf", required=false, defaultValue = "0") Integer tlf,  
+			Model modelIP) {
 		
 		
-		return "InsertarEjemplar";
+		repProveedor.save(new Proveedor(cif,nombre,cp,mail,tlf));
+		return "InsertarProveedor";
 	}
 	
 	@RequestMapping("/insertarModelo")
 	public String insert_modelo(Model modelIM) {
 
 		return "InsertarModelo";
-	}
-	
-	@RequestMapping("/insertarProveedor")
-	public String insert_proveedor(Model modelIP) {
+	}	
 
-		return "InsertarProveedor";
-	}
+	@RequestMapping("/insertarEjemplar")
+	public String insert_ejemplar(Model modelIE) {
+		
+		
+		return "InsertarEjemplar";
+	}	
 	
 	
 	//MODIFICACIONES
@@ -146,10 +153,10 @@ public class TablonController {
 	}
 	
 	//Operaciones de Modificar
-	@RequestMapping("/modificarEjemplar")
-	public String mod_ejemplar(Model modelME) {
+	@RequestMapping("/modificarProveedor")
+	public String mod_proveedor(Model modelMP) {
 
-		return "ModificarEjemplar";
+		return "ModificarProveedor";
 	}
 	
 	@RequestMapping("/modificarModelo")
@@ -158,12 +165,11 @@ public class TablonController {
 		return "ModificarModelo";
 	}
 	
-	@RequestMapping("/modificarProveedor")
-	public String mod_proveedor(Model modelMP) {
+	@RequestMapping("/modificarEjemplar")
+	public String mod_ejemplar(Model modelME) {
 
-		return "ModificarProveedor";
-	}	
-	
+		return "ModificarEjemplar";
+	}
 	
 }
 

@@ -15,32 +15,43 @@
 <body>
 
 	<h1>Insertar Ejemplar</h1>
-	<h2>A continuación introduzca los datos del nuevo ejemplar a insertar: </h2>
+	<h4>A continuación introduzca los datos del nuevo ejemplar a insertar: </h4>
 
 	<form action="/insertar" method="post">
+	
 		<label for="ejemplaresDisponibles">Ejemplares disponibles:</label>
 			<input type='number' name='ejemplaresDisponibles' placeholder='Numero de ejemplares disponibles' min='0' required><br/>
+			
 		<label for="anoAcunacion">Año de acuñación: </label>
 			<input type='number' name='anoAcunacion' placeholder='Año de acuñación' max='2019'/><br/>
+			
 		<label for="ciudadAcunacion">Ciudad de acuñación: </label>
 			<input type='text' name='ciudadAcunacion' placeholder='Ciudad acuñación'/><br/>
+			
 		<label for="fechaAdquisicion">Fecha de adquisición: </label>
 			<input type='date' name='fechaAdquisicion' required/><br/>
+			
 		<label for="estadoConservacion">Estado de conservación: </label>
 			<select name='estadoConservacion'>
 				<option value='Bueno'>Bueno</option>
 				<option value='Normal'>Normal</option>
 				<option value='Malo'>Malo</option>
-			</select><br/>
-		<label for="modelo">Modelos: </label>
-			<select name='modelo' required>
-				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected="false"/>
-			</select><br/>
+			</select><br/>		
+		
+		<!-- label for="modelo">Modelos: </label>
+		
+			<select th:field="*{modelos}" required>
+				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected='false'/>
+			</select><br/-->
+			
 		<label for="proveedor">Proveedor: </label>
-			<select name='proveedor' required>
-				<option th:each="proveedor : ${proveedor}" th:value='$proveedor.nombre' th:text='$proveedor.nombre' th:selected="false"/>
+		
+			<select name="proveedor">
+				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.name}" th:text="${proveedor.name}"></option>
 			</select><br/>
+			
 		<input type='submit' name='insertar' value='Insertar'/><br/>
+				
 	</form>
 	
 </body>

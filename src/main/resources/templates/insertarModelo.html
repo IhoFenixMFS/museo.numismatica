@@ -15,23 +15,33 @@
 <body>
 
 	<h1>Insertar Modelo</h1>
+	<h4>A continuación introduzca los datos del nuevo modelo a insertar: </h4>
 
 	<form action="/insertar" method="post">
+	
 		<label for="nombre">Nombre: </label>
 			<input type='text' name='nombre' placeholder='Nombre' required/><br/>
+			
 		<label for="valorFacial">Valor Facial: </label>
 			<input type='number' name='valorFacial' placeholder='Valor facial' required/><br/>
+			
 		<label for="unidad">Unidad: </label>
 			<input type='text' name='unidad' placeholder='Unidad: €, $, céntimo ...' required/><br/>
+			
 		<label for="diametro">Diámetro: </label>
 			<input type='number' name='diametro' placeholder='Diámetro'/><br/>
+			
 		<label for="peso">Peso: </label>
 			<input type='number' name='peso' placeholder='Peso'/><br/>
+			
 		<label for="metal">Metal: </label>
 			<input type='text' name='metal' placeholder='Metal'/><br/>
-		<label for="descripcion">Descripción: </label></br>
+			
+		<label for="descripcion">Descripción: </label>
 			<input type='text' name='descripcion' size='120' placeholder='Introduzca una descripción ....'/><br/>
+			
 		<input type='submit' name='insertar' value='Insertar' />
+		
 	</form>
 	
 </body>
