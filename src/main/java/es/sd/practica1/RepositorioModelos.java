@@ -2,9 +2,13 @@ package es.sd.practica1;
 
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface RepositorioModelos extends JpaRepository<Modelos, Integer> {
-	
+
+	@Query("SELECT m FROM Modelos m WHERE m.id_modelos=?1")
+	public Modelos findById_modelos(Integer id_modelos);
+
 	public List<Modelos> findByNombre (String nombre);
 	public List<Modelos> findByValorFacial (double valorFacial);
 	public List<Modelos> findByUnidad (String unidad);

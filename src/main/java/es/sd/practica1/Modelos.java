@@ -26,9 +26,22 @@ public class Modelos {
 	@OneToMany(cascade=CascadeType.ALL) //Unidireccional
 	@JoinTable(name = "MOD_EJEM", 
 	joinColumns=@JoinColumn(name="ID_ME"))
-	private Collection<Ejemplares> ejemplares;	
+	private Collection<Ejemplares> ejemplares;
 
-	//Constructor generado con todos los campos de Ejemplares		
+	//Constructor generado con todos los campos de Ejemplares
+	public Modelos(int id_modelos, String nombre, double valorFacial, String unidad, double diametro, double peso, String metal,
+				   String descripcion) {
+		this.id_modelos = id_modelos;
+		this.nombre = nombre;
+		this.valorFacial = valorFacial;
+		this.unidad = unidad;
+		this.diametro = diametro;
+		this.peso = peso;
+		this.metal = metal;
+		this.descripcion = descripcion;
+	}
+
+	//Constructor generado con todos los campos de Ejemplares
 	public Modelos(String nombre, double valorFacial, String unidad, double diametro, double peso, String metal,
 			String descripcion) {
 		this.nombre = nombre;

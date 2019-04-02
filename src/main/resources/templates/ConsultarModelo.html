@@ -71,18 +71,18 @@
 			<td>Descripcion</td>
 			<td>Modificar</td>
 		</tr>
-		<th:block th:each="modelos : ${modelos}">
+		<th:block th:each="modelo : ${modelos}">
 			<tr>
-				<td><span th:text="${modelos.id_modelos}"></span></td>
-				<td><span th:text="${modelos.nombre}"></span></td>
-				<td><span th:text="${modelos.valorFacial}"></span></td> 
-				<td><span th:text="${modelos.unidad}"></span></td> 
-				<td><span th:text="${modelos.diametro}"></span></td> 
-				<td><span th:text="${modelos.peso}"></span></td> 
-				<td><span th:text="${modelos.metal}"></span></td> 
-				<td><span th:text="${modelos.descripcion}"></span></td>
+				<td><span th:text="${modelo.id_modelos}"></span></td>
+				<td><span th:text="${modelo.nombre}"></span></td>
+				<td><span th:text="${modelo.valorFacial}"></span></td>
+				<td><span th:text="${modelo.unidad}"></span></td>
+				<td><span th:text="${modelo.diametro}"></span></td>
+				<td><span th:text="${modelo.peso}"></span></td>
+				<td><span th:text="${modelo.metal}"></span></td>
+				<td><span th:text="${modelo.descripcion}"></span></td>
 				<td>
-					<form th:value="${modelos.id_modelos}" action="/modificarModelo">
+					<form th:value="${modelo.id_modelos}" th:action="@{'/modificarModelo/' + ${modelo.id_modelos}}">
 						<div class="btn-group">
 							<button class="button">Modificar</button>
 						</div>

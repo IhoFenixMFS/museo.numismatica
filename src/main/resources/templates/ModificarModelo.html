@@ -17,28 +17,28 @@
 	<h1>Modificar Modelo</h1>
 	
 	<h4>Rellena los campos que deseas modificar</h4>
-	<form action="/modificarModelo" method="post">
+	<form th:action="@{'/modificarModelo/' + ${modelo.id_modelos}}" th:method="put">
 	
 		<label for="nombre">Nombre: </label>
-			<input type='text' name='nombre' placeholder='Nombre'/><br/>
+			<input th:value="${modelo.nombre}" type='text' name='nombre' placeholder='Nombre'/><br/>
 			
 		<label for="valorFacial">Valor Facial: </label>
-			<input type='number' step=".01" name='valorFacial' placeholder='Valor facial'/><br/>
+			<input th:value="${modelo.valorFacial}" type='number' step=".01" name='valorFacial' placeholder='Valor facial'/><br/>
 			
 		<label for="unidad">Unidad: </label>
-			<input type='text' name='unidad' placeholder='Unidad: €, $, céntimo ...'/><br/>
+			<input th:value="${modelo.unidad}" type='text' name='unidad' placeholder='Unidad: €, $, céntimo ...'/><br/>
 			
 		<label for="diametro">Diámetro: </label>
-			<input type='number' step=".01" name='diametro' placeholder='Diámetro'/><br/>
+			<input th:value="${modelo.diametro}" type='number' step=".01" name='diametro' placeholder='Diámetro'/><br/>
 			
 		<label for="peso">Peso: </label>
-			<input type='number' step=".01" name='peso' placeholder='Peso'/><br/>
+			<input th:value="${modelo.peso}" type='number' step=".01" name='peso' placeholder='Peso'/><br/>
 			
 		<label for="metal">Metal: </label>
-			<input type='text' name='metal' placeholder='Metal'/><br/>
+			<input th:value="${modelo.metal}" type='text' name='metal' placeholder='Metal'/><br/>
 			
 		<label for="descripcion">Descripción: </label>
-			<input type='text' name='descripcion' size='120' placeholder='Introduzca una descripción ....'/><br/>
+			<input th:value="${modelo.descripcion}" type='text' name='descripcion' size='120' placeholder='Introduzca una descripción ....'/><br/>
 			
 		<input type='submit' name='modificar' value='Modificar' />
 		

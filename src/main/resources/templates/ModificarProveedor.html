@@ -17,22 +17,22 @@
 	<h1>Modificar Proveedor</h1>
 
 	<h4>Rellena los campos que deseas modificar</h4>
-	<form action="/modificarProveedor" th:method="put">
+	<form th:action="@{'/modificarModelo/' + ${modelo.id_modelos}}" th:method="put">
 	
 		<label for="cif">CIF: </label>
-			<input type='text' name='cif' pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' placeholder='CIF'/><br/>
+			<input disabled th:value="${proveedor.cif}" type='text' name='cif' pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' placeholder='CIF'/><br/>
 			
 		<label for="nombre">Nombre: </label>
-			<input type='text' name='nombre' placeholder='Nombre'/><br/>
+			<input th:value="${proveedor.nombre}" type='text' name='nombre' placeholder='Nombre'/><br/>
 			
 		<label for="cp">Código postal: </label>
-			<input type='number' name='cp'  placeholder='Código postal' min='01000' max='52080'/><br/>
+			<input th:value="${proveedor.cp}" type='number' name='cp'  placeholder='Código postal' min='01000' max='52080'/><br/>
 			
 		<label for="mail">Correo electrónico: </label>
-			<input type='email' name='mail' pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder='email@email.com'/><br/>
+			<input th:value="${proveedor.mail}" type='email' name='mail' pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder='email@email.com'/><br/>
 			
 		<label for="tlf">Teléfono: </label>
-			<input type='tel' name='tlf' pattern='^(\+34|0034|34)?[6|7|8|9][0-9]{8}$' placeholder='+34123456789 o 123456789'/><br/>
+			<input th:value="${proveedor.tlf}" type='tel' name='tlf' pattern='^(\+34|0034|34)?[6|7|8|9][0-9]{8}$' placeholder='+34123456789 o 123456789'/><br/>
 			
 		<input type='submit' name='modificar' value='Modificar' />
 		

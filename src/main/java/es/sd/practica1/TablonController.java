@@ -271,31 +271,54 @@ public class TablonController {
 	}
 	
 	//Operaciones de Modificar
+
+	// PROVEEDOR
 	@RequestMapping(value="/modificarProveedor/{cif}", method=RequestMethod.GET)
 	public String mod_proveedor(@PathVariable("cif") String cifP, Model modelMP) {
-		
+		modelMP.addAttribute("proveedor", repProveedor.findByCif(cifP).get(0));
 		return "ModificarProveedor";
 	}
 	
-	@RequestMapping(value="/modificarProveedor", method=RequestMethod.PUT)
-	public String mod_proveedor_put(@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
+	@RequestMapping(value="/modificarProveedor/{cif}", method=RequestMethod.PUT)
+	public String mod_proveedor_put(@PathVariable("cif") String cifP, @RequestParam(value="cif", required=false, defaultValue = "0") String cif,
 			@RequestParam(value="nombre", required=false) String nombre, 
 			@RequestParam(value="cp", required=false, defaultValue = "0") Integer cp, 
 			@RequestParam(value="mail", required=false) String mail, 
 			@RequestParam(value="tlf", required=false, defaultValue = "0") Integer tlf,
 			Model modelMM)
 	{
-		System.err.println(nombre);
-		System.err.println(cp);
-		System.err.println(mail);
-		System.err.println(tlf);
-		System.err.println("----------------");
-		System.err.println(modelMM);
-		System.err.println("----------------");
-		System.err.println("----------------");
-		System.err.println("----------------");
+		Proveedor proveedor = repProveedor.findByCif(cifP).get(0);
 
-		return "ConsultarProveedor";
+		if (nombre != null) {
+			repProveedor.save(new Proveedor(proveedor.getCif(),nombre,cp,mail,tlf));
+		}
+
+		return "Consultar";
+	}
+
+	// PROVEEDOR
+	@RequestMapping(value="/modificarModelo/{id}", method=RequestMethod.GET)
+	public String mod_modelo(@PathVariable("id") int id, Model modelMP) {
+		Modelos modelos = repModelos.findById_modelos(id);
+		modelMP.addAttribute("modelo", modelos);
+		return "ModificarModelo";
+	}
+
+	@RequestMapping(value="/modificarModelo/{id}", method=RequestMethod.PUT)
+	public String mod_modelo_put(@PathVariable("id") int id, @RequestParam(value="nombre", required=false) String nombre,
+			 @RequestParam(value="valorFacial", required=false, defaultValue = "0") Double valorFacial,
+			 @RequestParam(value="unidad", required=false) String unidad,
+			 @RequestParam(value="diametro", required=false, defaultValue = "0") Double diametro,
+			 @RequestParam(value="peso", required=false, defaultValue = "0") Double peso,
+			 @RequestParam(value="metal", required=false) String metal,
+			 @RequestParam(value="descripcion", required=false) String descripcion,
+			 Model modelMM)
+	{
+		if (nombre != null) {
+			repModelos.save(new Modelos(id, nombre,valorFacial,unidad,diametro,peso,metal,descripcion));
+		}
+
+		return "Consultar";
 	}
 	
 	@RequestMapping("/modificarModelo")
