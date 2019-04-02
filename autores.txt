@@ -1,0 +1,30 @@
+Autores:
+-Marina Fernández Suárez 05448193E
+-Felix Muñumel Piaya 11862579F
+-Guillermo de Azcarate Acosta 45137068M
+-Cristian Nicolae Dinca (Dispensa Académica, no hay ninguna comunicación desde el 07 de febrero)
+
+Participación:
+
+-Guillermo y Felix:
+>Bocetación de entidades.
+>Formularios solo con campos input type='text'.
+>Operacion para la redireccion a los html.
+
+-Marina:
+>Configuración de base de datos y H2.
+>Configuración de Sprint-Maven e Hibernate.
+>Dependencias y métodos de arranque automático, y de creación y eliminación de base de datos automáticos.
+>Instalación y enlace de Bootstrap y JQuery.
+>Entidades completas con todos los campos requeridos y sus relaciones y repositorios de las mismas.
+>Base de datos.
+>Formularios (inserción, consulta y modificación) con sus campos específicos y sus restricciones.
+>Navegación entre ventanas.
+>Métodos get, post, put, orderBy y findBy.
+>Ordenación de datos.
+>Filtros de búsqueda.
+>Modificación de uno o varios datos.
+>Enlace y retoques plantilla bootstrap básica.
+
+*Si hay alguna duda en las participaciones, pueden consultarse de forma más concreta en:
+https://github.com/IhoFenixMFS/museo.numismatica
