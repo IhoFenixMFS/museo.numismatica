@@ -78,11 +78,29 @@ public class TablonController {
 			@RequestParam(value="cpP", required=false, defaultValue="52081") Integer cpP,
 			@RequestParam(value="mailP", required=false) String mailP,
 			@RequestParam(value="tlfP", required=false, defaultValue="700000000") Integer tlfP,
+			@RequestParam(value="ordenarP", required=false) String ordenarP,
 			Model modelCP) {
 		
-		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
-			modelCP.addAttribute("proveedor", repProveedor.findAll());
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc()); //Funciona
+		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000)) {
+					
+			if (ordenarP == "OrdenarNombresAsc") {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreAsc());
+			}
+			else if (ordenarP == "OrdenarNombresDesc") {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc());
+			}
+			else if (ordenarP == "OrdenarCifAsc") {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCifAsc());
+			}
+			else if (ordenarP == "OrdenarCpDesc") { 
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCpDesc());
+			}
+			else if (ordenarP == "OrdenarTlfAsc") {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByTlfAsc());
+			}
+			else {
+				modelCP.addAttribute("proveedor", repProveedor.findAll());
+			}
 		}
 		else if ( (cifP!=null || cifP!="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByCif(cifP));
@@ -99,6 +117,8 @@ public class TablonController {
 		else if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP!=null && tlfP!=700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByTlf(tlfP));
 		}		
+		
+		
 
 		return "ConsultarProveedor";
 	}	

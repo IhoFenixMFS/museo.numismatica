@@ -16,32 +16,46 @@
 
 	<h1>Consultar Proveedor</h1>
 	
+	<label>Ordenar por: </label><br/>
+	<form action="/consultarProveedor" method="post">
+		<select name='ordenarP' required>
+			<option value='OrdenarNombresAsc'>Nombres Ascendente</option>
+			<option value='OrdenarNombresDesc'>Nombres Descendente</option>
+			<option value='OrdenarCifAsc'>Cif Ascendente</option>
+			<option value='OrdenarCpDesc'>CP Descendente</option>
+			<option value='OrdenarTlfAsc'>Teléfono Ascendente</option>	
+		</select>
+		
+		<input type='submit' value='Buscar'/><br/>
+	</form>
+	
+	
 	<form action="/consultarProveedor">
-		<p>Introduzca el cif de un Proveedor:</p>
+		<label>Introduzca el cif de un Proveedor:</label><br/>
 		<input type='text' name='cifP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
 	<form action="/consultarProveedor">
-		<p>Introduzca el nombre de un Proveedor:</p>
+		<label>Introduzca el nombre de un Proveedor:</label><br/>
 		<input type='text' name='nombreP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
 	<form action="/consultarProveedor">
-		<p>Introduzca el Código Postal de un Proveedor:</p>
+		<label>Introduzca el Código Postal de un Proveedor:</label><br/>
 		<input type='number' name='cpP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
 	<form action="/consultarProveedor">
-		<p>Introduzca el email de un Proveedor:</p>
+		<label>Introduzca el email de un Proveedor:</label><br/>
 		<input type='email' name='mailP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
 	<form action="/consultarProveedor">
-		<p>Introduzca el número de teléfono de un Proveedor:</p>
+		<label>Introduzca el número de teléfono de un Proveedor:</label><br/>
 		<input type='tel' name='tlfP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
@@ -72,11 +86,7 @@
 			</tr>
 		</th:block>	
 	</table>
-		
-	<form action="/consultarProveedor">
-		<input type='submit' name='OrdenarNombresAsc' value='Ordenar Nombres'/>
-	</form>			
-		
+
 	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
