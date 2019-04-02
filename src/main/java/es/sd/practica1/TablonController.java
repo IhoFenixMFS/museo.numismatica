@@ -4,10 +4,13 @@ import java.sql.Date;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class TablonController {
@@ -81,27 +84,29 @@ public class TablonController {
 			@RequestParam(value="ordenarP", required=false) String ordenarP,
 			Model modelCP) {
 		
-		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000)) {
-					
-			if (ordenarP == "OrdenarNombresAsc") {
-				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreAsc());
-			}
-			else if (ordenarP == "OrdenarNombresDesc") {
-				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc());
-			}
-			else if (ordenarP == "OrdenarCifAsc") {
-				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCifAsc());
-			}
-			else if (ordenarP == "OrdenarCpDesc") { 
-				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCpDesc());
-			}
-			else if (ordenarP == "OrdenarTlfAsc") {
-				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByTlfAsc());
-			}
-			else {
-				modelCP.addAttribute("proveedor", repProveedor.findAll());
-			}
+		modelCP.addAttribute("proveedor", repProveedor.findAll());
+
+		if ("OrdenarNombresAsc".equals(ordenarP)) {
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreAsc());
 		}
+		else if ("OrdenarNombresDesc".equals(ordenarP)) {
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc());
+		}
+		else if ("OrdenarCifAsc".equals(ordenarP)) {
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCifAsc());
+		}
+		else if ("OrdenarCpDesc".equals(ordenarP)) { 
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCpDesc());
+		}
+		else if ("OrdenarTlfAsc".equals(ordenarP)) {
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByTlfAsc());
+		}	
+		
+		
+		/*
+		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000)) {
+			modelCP.addAttribute("proveedor", repProveedor.findAll());		
+		}	
 		else if ( (cifP!=null || cifP!="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByCif(cifP));
 		}
@@ -118,8 +123,7 @@ public class TablonController {
 			modelCP.addAttribute("proveedor", repProveedor.findByTlf(tlfP));
 		}		
 		
-		
-
+		*/
 		return "ConsultarProveedor";
 	}	
 	
@@ -267,10 +271,31 @@ public class TablonController {
 	}
 	
 	//Operaciones de Modificar
-	@RequestMapping("/modificarProveedor")
-	public String mod_proveedor(Model modelMP) {
-
+	@RequestMapping(value="/modificarProveedor/{cif}", method=RequestMethod.GET)
+	public String mod_proveedor(@PathVariable("cif") String cifP, Model modelMP) {
+		
 		return "ModificarProveedor";
+	}
+	
+	@RequestMapping(value="/modificarProveedor", method=RequestMethod.PUT)
+	public String mod_proveedor_put(@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
+			@RequestParam(value="nombre", required=false) String nombre, 
+			@RequestParam(value="cp", required=false, defaultValue = "0") Integer cp, 
+			@RequestParam(value="mail", required=false) String mail, 
+			@RequestParam(value="tlf", required=false, defaultValue = "0") Integer tlf,
+			Model modelMM)
+	{
+		System.err.println(nombre);
+		System.err.println(cp);
+		System.err.println(mail);
+		System.err.println(tlf);
+		System.err.println("----------------");
+		System.err.println(modelMM);
+		System.err.println("----------------");
+		System.err.println("----------------");
+		System.err.println("----------------");
+
+		return "ConsultarProveedor";
 	}
 	
 	@RequestMapping("/modificarModelo")

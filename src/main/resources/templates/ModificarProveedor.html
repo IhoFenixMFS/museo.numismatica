@@ -17,7 +17,7 @@
 	<h1>Modificar Proveedor</h1>
 
 	<h4>Rellena los campos que deseas modificar</h4>
-	<form action="/modificarProveedor" method="post">
+	<form action="/modificarProveedor" th:method="put">
 	
 		<label for="cif">CIF: </label>
 			<input type='text' name='cif' pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' placeholder='CIF'/><br/>
