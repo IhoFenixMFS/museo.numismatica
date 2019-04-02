@@ -32,17 +32,17 @@ public class TablonController {
 	@PostConstruct
 	private void initModelos() {
 		//Datos para la tabla MODELOS
-		repModelos.save(new Modelos("Doblón español", "doblón", 6.77, "oro"));
-		repModelos.save(new Modelos("Patagón de brabante", "patagón", 40, 8.9, "plata"));
-		repModelos.save(new Modelos("Maravedí español", "maravedí", 35, 4.8, "cobre"));
-		repModelos.save(new Modelos("Tetradracma ateniense", "tetradracma", 527, 327.22, "bronce"));
-		repModelos.save(new Modelos("Real español", "real", 3.35, "plata"));
+		repModelos.save(new Modelos("Doblón español", 1.2, "doblón", 6.77, "oro"));
+		repModelos.save(new Modelos("Patagón de brabante", 2, "patagón", 40, 8.9, "plata"));
+		repModelos.save(new Modelos("Maravedí español", 3, "maravedí", 35, 4.8, "cobre"));
+		repModelos.save(new Modelos("Tetradracma ateniense", 5, "tetradracma", 527, 327.22, "bronce"));
+		repModelos.save(new Modelos("Real español", 1, "real", 3.35, "plata"));
 	}
 	
 	@PostConstruct
 	private void initEjemplares() {
 		//Datos para la tabla EJEMPLARES		
-		repEjemplares.save(new Ejemplares(16, "Doblón español", 1634, "Valladolid", "Calderilla"));
+		repEjemplares.save(new Ejemplares(16, "Doblón español", 1634, "Valladolid", "Malo", "Calderilla"));
 		repEjemplares.save(new Ejemplares(3, "Patagón de brabante", 1622, "Segovia", "Normal", "Aurelio"));
 		repEjemplares.save(new Ejemplares(5, "Maravedí español", 1685, "Pontevedra", "Bueno", "Sancho"));
 		repEjemplares.save(new Ejemplares(2, "Tetradracma ateniense", -562, "Atenas", "Cecilia"));
@@ -103,27 +103,77 @@ public class TablonController {
 	}	
 	
 	@RequestMapping("/consultarModelo")
-	public String consult_modelo(@RequestParam(value="nombreM", required=false) String nombreM, Model modelCM) {
+	public String consult_modelo(@RequestParam(value="nombreM", required=false) String nombreM, 
+			@RequestParam(value="valorFacialM", required=false, defaultValue="0") Double valorFacialM,
+			@RequestParam(value="unidadM", required=false) String unidadM,
+			@RequestParam(value="diametroM", required=false, defaultValue="0") Double diametroM,
+			@RequestParam(value="pesoM", required=false, defaultValue="0") Double pesoM,
+			@RequestParam(value="metalM", required=false) String metalM,
+			@RequestParam(value="descripcionM", required=false) String descripcionM,
+			Model modelCM) {
 		
-		if (nombreM==null || nombreM=="") {
+		if ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
 			modelCM.addAttribute("modelos", repModelos.findAll());
 		}		
-		else {
+		else if  ( (nombreM!=null || nombreM!="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
 			modelCM.addAttribute("modelos", repModelos.findByNombre(nombreM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM!=null && valorFacialM!=0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByValorFacial(valorFacialM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM!=null || unidadM!="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByUnidad(unidadM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM!=null && diametroM!=0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByDiametro(diametroM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM!=null && pesoM!=0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByPeso(pesoM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM!=null || metalM!="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByMetal(metalM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM!=null || descripcionM!="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByDescripcion(descripcionM));
 		}
 
 		return "ConsultarModelo";
 	}		
 	
 	@RequestMapping("/consultarEjemplar")
-	public String consult_ejemplar(@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer numEjemplares, Model modelCE) {
+	public String consult_ejemplar(@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer ejemplaresDisponiblesE,
+			@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer anoAcunacionE,
+			@RequestParam(value="numEjemplares", required=false) String ciudadAcunacionE,
+			@RequestParam(value="numEjemplares", required=false) Date fechaAdquisicionE,
+			@RequestParam(value="numEjemplares", required=false) String estadoConservacionE,
+			@RequestParam(value="numEjemplares", required=false) String modeloE,
+			@RequestParam(value="numEjemplares", required=false) String proveedorE,
+			Model modelCE) {
 				
-		if (numEjemplares==null || numEjemplares==0) {
+		if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
 			modelCE.addAttribute("ejemplares", repEjemplares.findAll());
+		}		
+		else if ( (ejemplaresDisponiblesE!=null && ejemplaresDisponiblesE!=0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(ejemplaresDisponiblesE));
 		}
-		else {
-			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(numEjemplares));
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE!=null && anoAcunacionE!=0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByAnoAcunacion(anoAcunacionE));
 		}
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE!=null || ciudadAcunacionE!="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByCiudadAcunacion(ciudadAcunacionE));
+		}
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE!=null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByFechaAdquisicion(fechaAdquisicionE));
+		}
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE!=null || estadoConservacionE!="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByEstadoConservacion(estadoConservacionE));
+		}
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE!=null || modeloE!="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByModelo(modeloE));
+		}
+		else if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE!=null || proveedorE!="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByProveedor(proveedorE));
+		}		
 		
 		return "ConsultarEjemplar";
 	}	

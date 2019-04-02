@@ -18,6 +18,7 @@
 
 	<h4>Rellena los campos que deseas modificar</h4>
 	<form action="/modificarProveedor" method="post">
+	
 		<label for="cif">CIF: </label>
 			<input type='text' name='cif' pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' placeholder='CIF'/><br/>
 			
@@ -34,6 +35,14 @@
 			<input type='tel' name='tlf' pattern='^(\+34|0034|34)?[6|7|8|9][0-9]{8}$' placeholder='+34123456789 o 123456789'/><br/>
 			
 		<input type='submit' name='modificar' value='Modificar' />
+		
+	</form>
+	
+	<p>Pulse Aceptar cuando haya terminado de modificar el proveedor: </p>
+	<form action="/consultarProveedor" method="post">
+		<div class="btn-group">
+		  <button class="button">Aceptar</button>
+		</div>
 	</form>
 
 </body>

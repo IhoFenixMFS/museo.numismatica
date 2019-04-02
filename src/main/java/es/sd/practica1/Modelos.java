@@ -15,10 +15,10 @@ public class Modelos {
 	private int id_modelos;		
 	
 	private String nombre;	
-	private double valorFacial;
+	private double valorFacial=1;
 	private String unidad;
-	private double diametro;
-	private double peso;
+	private double diametro=1.2;
+	private double peso=3;
 	private String metal;
 	private String descripcion;
 	
@@ -40,16 +40,18 @@ public class Modelos {
 		this.descripcion = descripcion;
 	}
 	
-	public Modelos(String nombre, String unidad,double diametro, double peso, String metal) {
+	public Modelos(String nombre, double valorFacial, String unidad,double diametro, double peso, String metal) {
 		this.nombre = nombre;
+		this.valorFacial = valorFacial;
 		this.unidad = unidad;
 		this.diametro = diametro;
 		this.peso = peso;
 		this.metal = metal;
 	}
 	
-	public Modelos(String nombre, String unidad,double peso, String metal) {
+	public Modelos(String nombre, double valorFacial, String unidad,double peso, String metal) {
 		this.nombre = nombre;
+		this.valorFacial = valorFacial;
 		this.unidad = unidad;
 		this.peso = peso;
 		this.metal = metal;
