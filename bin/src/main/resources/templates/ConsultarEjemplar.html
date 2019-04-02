@@ -9,24 +9,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>   
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-    
+
 </head>
 
 <body>
 
 	<h1>Consultar Ejemplares</h1>
+		
+	<form action="/consultarEjemplar">
+		<h2>Introduzca el numero de stock del Ejemplar que busca:</h2><br/>
+		<input type='text' name='numEjemplares'/>
+		<input type='submit' value='Buscar'/>
+	</form>
 	
-	<div th:each="ejemplar : ${ejemplares}">
-		<span th:text="'ID:' + ${ejemplares.id_ejemplares}" ></span>
-		<span th:text="'Ejemplares disponibles:' + ${ejemplares.ejemplaresDisponibles}" ></span>
-		<span th:text="'Año Acuñación:' + ${ejemplares.anoAcunacion}" ></span>
-		<span th:text="'Ciudad Acuñación:' + ${ejemplares.ciudadAcunacion}" ></span>
-		<span th:text="'Fecha de adquisición:' + ${ejemplares.fechaAdquisicion}" ></span>
-		<span th:text="'Estado de Conservación:' + ${ejemplares.estadoConservacion}" ></span>
-		<span th:text="'Modelo:' + ${ejemplares.modelo}" ></span>
-		<span th:text="'Proveedor:' + ${ejemplares.proveedor}" ></span>
-	</div>
-	
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>Ejemplares disponibles</td>
+			<td>Año Acuñación</td>
+			<td>Ciudad Acuñación</td>
+			<td>Fecha de adquisición</td>
+			<td>Estado de Conservación</td>
+			<td>Modelo</td>
+			<td>Proveedor</td>
+			<td>Modificar</td>
+		</tr>
+		<th:block th:each="ejemplares : ${ejemplares}">
+			<tr>
+				<td><span th:text='${ejemplares.id_ejemplares}'></span></td>
+				<td><span th:text="${ejemplares.ejemplaresDisponibles}"></span></td>
+				<td><span th:text="${ejemplares.anoAcunacion}"></span></td> 
+				<td><span th:text="${ejemplares.ciudadAcunacion}"></span></td> 
+				<td><span th:text="${ejemplares.fechaAdquisicion}"></span></td> 
+				<td><span th:text="${ejemplares.estadoConservacion}"></span></td> 
+				<td><span th:text="${ejemplares.modelo}"></span></td> 
+				<td><span th:text="${ejemplares.proveedor}"></span></td>
+				<td>
+					<form th:value="${ejemplares.id_ejemplares}" action="/modificarEjemplar">
+						<div class="btn-group">
+							<button class="button">Modificar</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+		</th:block>	
+	</table>	
+
 	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
@@ -34,4 +62,5 @@
 	</form>
 
 </body>
+
 </html>

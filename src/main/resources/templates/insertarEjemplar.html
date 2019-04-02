@@ -38,17 +38,15 @@
 				<option value='Malo'>Malo</option>
 			</select><br/>		
 		
-		<!-- label for="modelo">Modelos: </label>
-		
-			<select th:field="*{modelos}" required>
-				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected='false'/>
-			</select><br/-->
+		<label for="modelo">Modelos: </label>
+			<select name="modelo" required>
+				<option th:each="modelo : ${modelos}" th:value="${modelo.nombre}" th:text="${modelo.nombre}" th:selected="false"></option>
+			</select><br/>
 			
-		<!-- label for="proveedor">Proveedor: </label>
-		
-			<select name="proveedor">
-				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
-			</select><br/-->
+		<label for="proveedor">Proveedores: </label>
+			<select name="proveedor" required>
+				<option th:each="proveedor : ${proveedores}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}" th:selected="false"></option>
+			</select>
 			
 		<input type='submit' name='insertar' value='Insertar'/><br/>
 				

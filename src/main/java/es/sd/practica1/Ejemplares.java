@@ -1,8 +1,6 @@
 package es.sd.practica1;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,61 +12,77 @@ public class Ejemplares {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_ejemplares;
-	
+
 	private int ejemplaresDisponibles;
 	private int anoAcunacion;
 	private String ciudadAcunacion;
 	private java.sql.Date fechaAdquisicion;
-	private String estadoConservacion;
+	private String estadoConservacion="Normal";
 	private String modelo;
 	private String proveedor;
 
-	// Constructor generado con todos los campos de Ejemplares
+	
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
-			String fechaAdquisicion, String estadoConservacion, String proveedor) {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date parsed = null;
-		try {
-			parsed = (Date) sdf.parse(fechaAdquisicion);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}	
-	    java.sql.Date sqlfechaAdquisicion = new java.sql.Date(parsed.getTime());
+			Date fecha, String estadoConservacion, String proveedor) {
 
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
 		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = sqlfechaAdquisicion;
+		this.fechaAdquisicion = fechaPasada(fecha);
+		this.estadoConservacion = estadoConservacion;
+		this.proveedor = proveedor;
+	}
+	
+	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+			 String estadoConservacion, String proveedor) {
+		
+		this.ejemplaresDisponibles = ejemplaresDisponibles;
+		this.modelo = modelo;
+		this.anoAcunacion = anoAcunacion;
+		this.ciudadAcunacion = ciudadAcunacion;
+		this.fechaAdquisicion = fechaAct();
 		this.estadoConservacion = estadoConservacion;
 		this.proveedor = proveedor;
 	}
 
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
-			String fechaAdquisicion, String proveedor)  {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date parsed = null;
-		try {
-			parsed = (Date) sdf.parse(fechaAdquisicion);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}	
-	    java.sql.Date sqlfechaAdquisicion = new java.sql.Date(parsed.getTime());
+			Date fechaAdquisicion, String proveedor)  {	
 		
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.modelo = modelo;
 		this.anoAcunacion = anoAcunacion;
 		this.ciudadAcunacion = ciudadAcunacion;
-		this.fechaAdquisicion = sqlfechaAdquisicion;
+		this.fechaAdquisicion = fechaPasada(fechaAdquisicion);
+		this.proveedor = proveedor;
+	}
+
+	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+			 String proveedor) {
+
+		this.ejemplaresDisponibles = ejemplaresDisponibles;
+		this.modelo = modelo;
+		this.anoAcunacion = anoAcunacion;
+		this.ciudadAcunacion = ciudadAcunacion;
+		this.fechaAdquisicion = fechaAct();
 		this.proveedor = proveedor;
 	}
 
 	public Ejemplares() {
+		
 	}
 
-	// Getters y Setters automaticos de todos los atributos de la entidad
+	private java.sql.Date fechaAct() {		
+		java.util.Date d = new java.util.Date();  
+		java.sql.Date sqldate = new java.sql.Date(d.getTime());
+		return sqldate;
+	}
+	
+	private java.sql.Date fechaPasada(Date d) {		
+		java.sql.Date sqldate = new java.sql.Date(d.getTime());
+		return sqldate;
+	}
+	
 	public int getId_ejemplares() {
 		return id_ejemplares;
 	}

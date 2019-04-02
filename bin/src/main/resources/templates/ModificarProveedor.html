@@ -15,25 +15,24 @@
 <body>
 
 	<h1>Modificar Proveedor</h1>
-	
-	<p>Rellena los campos que deseas modificar</p>
-	<form action="/modificar" method="post">
-		<p>
-			<b>CIF:</b> <input type='text' name='cif' />
-		</p>
 
-		<p>
-			<b>Nombre:</b> <input type='text' name='nombre' />
-		</p>
-		<p>
-			<b>Código postal:</b> <input type='text' name='cp' />
-		</p>
-		<p>
-			<b>Correo electrónico:</b> <input type='text' name='mail' />
-		</p>
-		<p>
-			<b>Teléfono:</b> <input type='text' name='tlf' />
-		</p>
+	<h4>Rellena los campos que deseas modificar</h4>
+	<form action="/modificarProveedor" method="post">
+		<label for="cif">CIF: </label>
+			<input type='text' name='cif' pattern='^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$' placeholder='CIF'/><br/>
+			
+		<label for="nombre">Nombre: </label>
+			<input type='text' name='nombre' placeholder='Nombre'/><br/>
+			
+		<label for="cp">Código postal: </label>
+			<input type='number' name='cp'  placeholder='Código postal' min='01000' max='52080'/><br/>
+			
+		<label for="mail">Correo electrónico: </label>
+			<input type='email' name='mail' pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder='email@email.com'/><br/>
+			
+		<label for="tlf">Teléfono: </label>
+			<input type='tel' name='tlf' pattern='^(\+34|0034|34)?[6|7|8|9][0-9]{8}$' placeholder='+34123456789 o 123456789'/><br/>
+			
 		<input type='submit' name='modificar' value='Modificar' />
 	</form>
 

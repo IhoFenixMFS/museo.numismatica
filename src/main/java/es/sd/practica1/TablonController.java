@@ -1,11 +1,12 @@
 package es.sd.practica1;
 
+import java.sql.Date;
+
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -40,12 +41,12 @@ public class TablonController {
 	
 	@PostConstruct
 	private void initEjemplares() {
-		//Datos para la tabla EJEMPLARES
-		repEjemplares.save(new Ejemplares(16, "Doblón español", 1634, "Valladolid", "01/01/2000", "Calderilla"));
-		repEjemplares.save(new Ejemplares(3, "Patagón de brabante", 1622, "Segovia", "13/03/2004", "deteriorado", "Aurelio"));
-		repEjemplares.save(new Ejemplares(5, "Maravedí español", 1685, "Pontevedra", "05/08/1998", "oxidado", "Sancho"));
-		repEjemplares.save(new Ejemplares(2, "Tetradracma ateniense", -562, "Atenas", "14/07/1991", "Cecilia"));
-		repEjemplares.save(new Ejemplares(8, "Real español", 1767, "Madrid", "19/05/2008", "desgastado", "Amelio"));
+		//Datos para la tabla EJEMPLARES		
+		repEjemplares.save(new Ejemplares(16, "Doblón español", 1634, "Valladolid", "Calderilla"));
+		repEjemplares.save(new Ejemplares(3, "Patagón de brabante", 1622, "Segovia", "Normal", "Aurelio"));
+		repEjemplares.save(new Ejemplares(5, "Maravedí español", 1685, "Pontevedra", "Bueno", "Sancho"));
+		repEjemplares.save(new Ejemplares(2, "Tetradracma ateniense", -562, "Atenas", "Cecilia"));
+		repEjemplares.save(new Ejemplares(8, "Real español", 1767, "Madrid", "Malo", "Amelio"));
 	}
 		
 
@@ -72,15 +73,32 @@ public class TablonController {
 	
 	//Operaciones de Consultar	
 	@RequestMapping("/consultarProveedor")
-	public String consult_proveedor(@RequestParam(value="nombreP", required=false) String nombreP, Model modelCP) {
-	
-		if (nombreP==null || nombreP=="") {
+	public String consult_proveedor(@RequestParam(value="cifP", required=false) String cifP, 
+			@RequestParam(value="nombreP", required=false) String nombreP,
+			@RequestParam(value="cpP", required=false, defaultValue="52081") Integer cpP,
+			@RequestParam(value="mailP", required=false) String mailP,
+			@RequestParam(value="tlfP", required=false, defaultValue="700000000") Integer tlfP,
+			Model modelCP) {
+		
+		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findAll());
 		}
-		else {
+		else if ( (cifP!=null || cifP!="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
+			modelCP.addAttribute("proveedor", repProveedor.findByCif(cifP));
+		}
+		else if ( (cifP==null || cifP=="") && (nombreP!=null || nombreP!="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByNombre(nombreP));
 		}
-		
+		else if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP!=null && cpP!=52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
+			modelCP.addAttribute("proveedor", repProveedor.findByCp(cpP));
+		}
+		else if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP!=null || mailP!="") && (tlfP==null || tlfP==700000000) ) {
+			modelCP.addAttribute("proveedor", repProveedor.findByMail(mailP));
+		}
+		else if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP!=null && tlfP!=700000000) ) {
+			modelCP.addAttribute("proveedor", repProveedor.findByTlf(tlfP));
+		}		
+
 		return "ConsultarProveedor";
 	}	
 	
@@ -119,7 +137,7 @@ public class TablonController {
 	}
 	
 	//Operaciones de Consultar	
-	@RequestMapping(value = "/insertarProveedor", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertarProveedor")
 	public String insert_proveedor(@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
 			@RequestParam(value="nombre", required=false) String nombre, 
 			@RequestParam(value="cp", required=false, defaultValue = "0") Integer cp, 
@@ -127,7 +145,7 @@ public class TablonController {
 			@RequestParam(value="tlf", required=false, defaultValue = "0") Integer tlf,  
 			Model modelIP) {
 		
-		if (cif != "0") {
+		if (nombre != null) {
 			repProveedor.save(new Proveedor(cif,nombre,cp,mail,tlf));
 		}
 		return "InsertarProveedor";
@@ -154,12 +172,14 @@ public class TablonController {
 	public String insert_ejemplar(@RequestParam(value="ejemplaresDisponibles", required=false, defaultValue = "0") Integer ejemplaresDisponibles, 
 			@RequestParam(value="anoAcunacion", required=false, defaultValue = "0") Integer anoAcunacion, 
 			@RequestParam(value="ciudadAcunacion", required=false) String ciudadAcunacion, 
-			@RequestParam(value="fechaAdquisicion", required=false) String fechaAdquisicion, 
+			@RequestParam(value="fechaAdquisicion", required=false) Date fechaAdquisicion, 
 			@RequestParam(value="estadoConservacion", required=false) String estadoConservacion, 
 			@RequestParam(value="modelo", required=false) String modelo,
 			@RequestParam(value="proveedor", required=false) String proveedor,
 			Model modelIE) {
-		
+
+		modelIE.addAttribute("modelos", repModelos.findAll());
+		modelIE.addAttribute("proveedores", repProveedor.findAll());
 		
 		if (ejemplaresDisponibles != 0) {
 			repEjemplares.save(new Ejemplares(ejemplaresDisponibles,modelo,anoAcunacion,ciudadAcunacion,fechaAdquisicion,estadoConservacion,proveedor));

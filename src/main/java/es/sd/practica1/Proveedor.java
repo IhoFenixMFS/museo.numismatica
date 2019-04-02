@@ -9,9 +9,9 @@ public class Proveedor {
 	@Id
 	private String cif;
 	private String nombre;
-	private int cp;
+	private int cp=52080;
 	private String mail;
-	private int tlf;
+	private int tlf=600000000;
 	
 	@ManyToMany(cascade=CascadeType.ALL) 
 	@JoinTable(name="PROV_EJEM",

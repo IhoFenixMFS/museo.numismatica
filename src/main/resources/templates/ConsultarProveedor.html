@@ -17,8 +17,32 @@
 	<h1>Consultar Proveedor</h1>
 	
 	<form action="/consultarProveedor">
+		<p>Introduzca el cif de un Proveedor:</p>
+		<input type='text' name='cifP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
+	
+	<form action="/consultarProveedor">
 		<p>Introduzca el nombre de un Proveedor:</p>
 		<input type='text' name='nombreP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
+	
+	<form action="/consultarProveedor">
+		<p>Introduzca el Código Postal de un Proveedor:</p>
+		<input type='number' name='cpP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
+	
+	<form action="/consultarProveedor">
+		<p>Introduzca el email de un Proveedor:</p>
+		<input type='email' name='mailP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
+	
+	<form action="/consultarProveedor">
+		<p>Introduzca el número de teléfono de un Proveedor:</p>
+		<input type='tel' name='tlfP'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
 	
@@ -29,6 +53,7 @@
 			<td>CP</td>
 			<td>Mail</td>
 			<td>Telefono</td>
+			<td>Modificar</td>
 		</tr>
 		<th:block th:each="proveedor : ${proveedor}">
 			<tr>

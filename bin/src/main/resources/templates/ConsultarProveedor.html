@@ -16,14 +16,38 @@
 
 	<h1>Consultar Proveedor</h1>
 	
-	<p th:each="proveedor : ${proveedores}">
-		<span th:text="'CIF:' + ${proveedor.cif}" /> <br/>
-		<span th:text="'Nombre:' + ${proveedor.nombre}" /> <br/>
-		<span th:text="'CP:' + ${proveedor.cp}" /> <br/>
-		<span th:text="'Mail:' + ${proveedor.mail}" /> <br/>
-		<span th:text="'Telefono:' + ${proveedor.tlf}" /> <br/>
-	</p>
+	<form action="/consultarProveedor">
+		<p>Introduzca el nombre de un Proveedor:</p>
+		<input type='text' name='nombreP'/>
+		<input type='submit' value='Buscar'/>
+	</form>	
 	
+	<table border="1">
+		<tr>
+			<td>CIF</td>
+			<td>Nombre</td>
+			<td>CP</td>
+			<td>Mail</td>
+			<td>Telefono</td>
+		</tr>
+		<th:block th:each="proveedor : ${proveedor}">
+			<tr>
+				<td><span th:text="${proveedor.cif}"></span></td>
+				<td><span th:text="${proveedor.nombre}"></span></td>
+				<td><span th:text="${proveedor.cp}"></span></td> 
+				<td><span th:text="${proveedor.mail}"></span></td> 
+				<td><span th:text="${proveedor.tlf}"></span></td> 
+				<td>
+					<form name="cif" th:value="${proveedor.cif}" action="/modificarProveedor" method="get">
+						<div class="btn-group">
+							<button class="button">Modificar</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+		</th:block>	
+	</table>
+		
 	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>

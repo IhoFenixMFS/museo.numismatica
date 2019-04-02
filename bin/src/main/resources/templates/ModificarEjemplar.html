@@ -16,30 +16,42 @@
 
 	<h1>Modificar Ejemplar</h1>
 	
-	<p>Rellena los campos que deseas modificar</p>
-	<form action="/modificar" method="post">
-		<p>
-			<b>Ejemplares disponibles:</b> <input type='text' name='ejemplaresDisponibles' />
-		</p>
-		<p>
-			<b>Año acuñación:</b> <input type='text' name='anoAcunacion' />
-		</p>
-		<p>
-			<b>Ciudad acuñación:</b> <input type='text' name='ciudadAcunacion' />
-		</p>
-		<p>
-			<b>Fecha de adquisición:</b> <input type='text' name='fechaAdquisicion' />
-		</p>
-		<p>
-			<b>Estado de conservación:</b> <input type='text' name='estadoConservacion' />
-		</p>
-		<p>
-			<b>Modelo:</b> <input type='text' name='modelo' />
-		</p>
-		<p>
-			<b>Proveedor:</b> <input type='text' name='proveedor' />
-		</p>
-		<input type='submit' name='modificar' value='Modificar' />
+	<h4>Rellena los campos que deseas modificar</h4>
+	<form action="/insertarEjemplar" method="post">
+	
+		<label for="ejemplaresDisponibles">Ejemplares disponibles:</label>
+			<input type='number' name='ejemplaresDisponibles' placeholder='Numero de ejemplares disponibles' min='0'><br/>
+			
+		<label for="anoAcunacion">Año de acuñación: </label>
+			<input type='number' name='anoAcunacion' placeholder='Año de acuñación' max='2019'/><br/>
+			
+		<label for="ciudadAcunacion">Ciudad de acuñación: </label>
+			<input type='text' name='ciudadAcunacion' placeholder='Ciudad acuñación'/><br/>
+			
+		<label for="fechaAdquisicion">Fecha de adquisición: </label>
+			<input type='date' name='fechaAdquisicion'/><br/>
+			
+		<label for="estadoConservacion">Estado de conservación: </label>
+			<select name='estadoConservacion'>
+				<option value='Bueno'>Bueno</option>
+				<option value='Normal'>Normal</option>
+				<option value='Malo'>Malo</option>
+			</select><br/>		
+		
+		<!-- label for="modelo">Modelos: </label>
+		
+			<select th:field="*{modelos}" required>
+				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected='false'/>
+			</select><br/-->
+			
+		<!-- label for="proveedor">Proveedor: </label>
+		
+			<select name="proveedor">
+				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
+			</select><br/-->
+			
+		<input type='submit' name='modificar' value='Modificar'/><br/>
+				
 	</form>
 
 </body>
