@@ -15,7 +15,22 @@
 <body>
 
 	<h1>Consultar Ejemplares</h1>
+	
+	<label>Ordenar por: </label><br/>
+	<form action="/consultarEjemplar">
+		<select name='ordenarE' required>
+			<option value='OrdenarCiudadAcunacionAsc'>Ciudad de Acuñación Ascendente</option>
+			<option value='OrdenarProveedorAsc'>Proveedor Ascendente</option>
+			<option value='OrdenarModeloDesc'>Modelo Descendente</option>
+			<option value='OrdenarAnoAcunacionAsc'>Año de Acuñación Ascendente</option>
+			<option value='OrdenarFechaAdquisicionAsc'>Fecha de Adquisición Ascendente</option>	
+			<option value='OrdenarEstadoConservacionDesc'>Estado de Conservación Descendente</option>	
+			<option value='OrdenarEjemplaresDisponiblesDesc'>Ejemplares Disponibles Descendente</option>	
+		</select>
 		
+		<input type='submit' value='Ordenar'/><br/>
+	</form>	
+	
 	<form action="/consultarEjemplar">
 		<p>Introduzca el numero de stock del Ejemplar que busca:</p>
 		<input type='number' name='ejemplaresDisponiblesE'/>

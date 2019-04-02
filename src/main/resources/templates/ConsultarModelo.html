@@ -16,6 +16,19 @@
 
 	<h1>Consultar Modelos</h1>
 	
+	<label>Ordenar por: </label><br/>
+	<form action="/consultarModelo">
+		<select name='ordenarM' required>
+			<option value='OrdenarNombresAsc'>Nombres Ascendente</option>
+			<option value='OrdenarValorFacialAsc'>Valor Facial Descendente</option>
+			<option value='OrdenarUnidadAsc'>Unidad Ascendente</option>
+			<option value='OrdenarDiametroAsc'>Diametro Ascendente</option>
+			<option value='OrdenarPesoDesc'>Peso Descendente</option>
+			<option value='OrdenarMetalDesc'>Metal Descendente</option>
+			<option value='OrdenarDescripcionDesc'>Descripción Descendente</option>	
+		</select>
+	</form>
+	
 	<form action="/consultarModelo">
 		<p>Introduzca el nombre de un Modelo:</p>
 		<input type='text' name='nombreM'/>

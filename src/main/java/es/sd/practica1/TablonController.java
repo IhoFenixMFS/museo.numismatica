@@ -83,29 +83,26 @@ public class TablonController {
 			@RequestParam(value="tlfP", required=false, defaultValue="700000000") Integer tlfP,
 			@RequestParam(value="ordenarP", required=false) String ordenarP,
 			Model modelCP) {
-		
-		modelCP.addAttribute("proveedor", repProveedor.findAll());
-
-		if ("OrdenarNombresAsc".equals(ordenarP)) {
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreAsc());
-		}
-		else if ("OrdenarNombresDesc".equals(ordenarP)) {
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc());
-		}
-		else if ("OrdenarCifAsc".equals(ordenarP)) {
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCifAsc());
-		}
-		else if ("OrdenarCpDesc".equals(ordenarP)) { 
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCpDesc());
-		}
-		else if ("OrdenarTlfAsc".equals(ordenarP)) {
-			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByTlfAsc());
-		}	
-		
-		
-		/*
+			
 		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000)) {
 			modelCP.addAttribute("proveedor", repProveedor.findAll());		
+			
+			if ("OrdenarNombresAsc".equals(ordenarP)) {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreAsc());
+			}
+			else if ("OrdenarNombresDesc".equals(ordenarP)) {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc());
+			}
+			else if ("OrdenarCifAsc".equals(ordenarP)) {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCifAsc());
+			}
+			else if ("OrdenarCpDesc".equals(ordenarP)) { 
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByCpDesc());
+			}
+			else if ("OrdenarTlfAsc".equals(ordenarP)) {
+				modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByTlfAsc());
+			}
+			
 		}	
 		else if ( (cifP!=null || cifP!="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByCif(cifP));
@@ -123,7 +120,7 @@ public class TablonController {
 			modelCP.addAttribute("proveedor", repProveedor.findByTlf(tlfP));
 		}		
 		
-		*/
+		
 		return "ConsultarProveedor";
 	}	
 	
@@ -135,10 +132,33 @@ public class TablonController {
 			@RequestParam(value="pesoM", required=false, defaultValue="0") Double pesoM,
 			@RequestParam(value="metalM", required=false) String metalM,
 			@RequestParam(value="descripcionM", required=false) String descripcionM,
+			@RequestParam(value="ordenarM", required=false) String ordenarM,
 			Model modelCM) {
 		
 		if ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
 			modelCM.addAttribute("modelos", repModelos.findAll());
+			
+			if ("OrdenarNombresAsc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByNombreAsc());
+			}
+			else if ("OrdenarValorFacialAsc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByValorFacialAsc());
+			}
+			else if ("OrdenarUnidadAsc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByUnidadAsc());
+			}
+			else if ("OrdenarDiametroAsc".equals(ordenarM)) { 
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByDiametroAsc());
+			}
+			else if ("OrdenarPesoDesc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByPesoDesc());
+			}
+			else if ("OrdenarMetalDesc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByMetalDesc());
+			}
+			else if ("OrdenarDescripcionDesc".equals(ordenarM)) {
+				modelCM.addAttribute("modelos", repModelos.findAllByOrderByDescripcionDesc());
+			}
 		}		
 		else if  ( (nombreM!=null || nombreM!="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
 			modelCM.addAttribute("modelos", repModelos.findByNombre(nombreM));
@@ -173,10 +193,33 @@ public class TablonController {
 			@RequestParam(value="estadoConservacionE", required=false) String estadoConservacionE,
 			@RequestParam(value="modeloE", required=false) String modeloE,
 			@RequestParam(value="proveedorE", required=false) String proveedorE,
+			@RequestParam(value="ordenarE", required=false) String ordenarE,
 			Model modelCE) {
 				
 		if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
-			modelCE.addAttribute("ejemplares", repEjemplares.findAll());
+			modelCE.addAttribute("ejemplares", repEjemplares.findAll());		
+			
+			if ("OrdenarCiudadAcunacionAsc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByCiudadAcunacionAsc());
+			}
+			else if ("OrdenarProveedorAsc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByProveedorAsc());
+			}
+			else if ("OrdenarModeloDesc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByModeloDesc());
+			}
+			else if ("OrdenarAnoAcunacionAsc".equals(ordenarE)) { 
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByAnoAcunacionAsc());
+			}
+			else if ("OrdenarFechaAdquisicionAsc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByFechaAdquisicionAsc());
+			}
+			else if ("OrdenarEstadoConservacionDesc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByEstadoConservacionDesc());
+			}
+			else if ("OrdenarEjemplaresDisponiblesDesc".equals(ordenarE)) {
+				modelCE.addAttribute("ejemplares", repEjemplares.findAllByOrderByEjemplaresDisponiblesDesc());
+			}
 		}		
 		else if ( (ejemplaresDisponiblesE!=null && ejemplaresDisponiblesE!=0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
 			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponibles(ejemplaresDisponiblesE));
@@ -278,22 +321,13 @@ public class TablonController {
 	}
 	
 	@RequestMapping(value="/modificarProveedor", method=RequestMethod.PUT)
-	public String mod_proveedor_put(@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
+	public String mod_proveedor_put(@PathVariable("cif") String cifP,@RequestParam(value="cif", required=false, defaultValue = "0") String cif, 
 			@RequestParam(value="nombre", required=false) String nombre, 
 			@RequestParam(value="cp", required=false, defaultValue = "0") Integer cp, 
 			@RequestParam(value="mail", required=false) String mail, 
 			@RequestParam(value="tlf", required=false, defaultValue = "0") Integer tlf,
 			Model modelMM)
 	{
-		System.err.println(nombre);
-		System.err.println(cp);
-		System.err.println(mail);
-		System.err.println(tlf);
-		System.err.println("----------------");
-		System.err.println(modelMM);
-		System.err.println("----------------");
-		System.err.println("----------------");
-		System.err.println("----------------");
 
 		return "ConsultarProveedor";
 	}
