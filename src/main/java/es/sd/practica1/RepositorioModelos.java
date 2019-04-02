@@ -12,7 +12,12 @@ public interface RepositorioModelos extends JpaRepository<Modelos, Integer> {
 	public List<Modelos> findByPeso (double peso);
 	public List<Modelos> findByMetal (String metal);
 	public List<Modelos> findByDescripcion (String descripcion);
-
 	public List<Modelos> findByValorFacialAndUnidad (double valorFacial, String unidad);
+	
+	public List<Modelos> findAllByOrderByNombreAsc();
+	public List<Modelos> findAllByOrderByValorFacialAsc();
+	public List<Modelos> findAllByOrderByUnidadAsc();
+	public List<Modelos> findAllByOrderByMetalDesc();
+	public List<Modelos> findAllByOrderByNombreDesc();
 	
 }

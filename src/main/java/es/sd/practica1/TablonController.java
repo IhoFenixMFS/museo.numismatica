@@ -82,6 +82,7 @@ public class TablonController {
 		
 		if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findAll());
+			modelCP.addAttribute("proveedor", repProveedor.findAllByOrderByNombreDesc()); //Funciona
 		}
 		else if ( (cifP!=null || cifP!="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByCif(cifP));

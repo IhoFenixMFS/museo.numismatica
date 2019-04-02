@@ -41,7 +41,7 @@
 	</form>	
 	
 	<form action="/consultarModelo">
-		<p>Introduzca el pseo de un Modelo:</p>
+		<p>Introduzca el peso de un Modelo:</p>
 		<input type='number' step=".01" name='pesoM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
@@ -92,6 +92,11 @@
 		</th:block>	
 	</table>
 	
+	<form action="/consultarModelo">
+		<input type='submit' name='OrdenarNombresAsc' value='Ordenar Nombres'/>
+	</form>	
+
+			
 	<form action="/consultar" method="post">
 		<div class="btn-group">
 		  <button class="button">Volver</button>
