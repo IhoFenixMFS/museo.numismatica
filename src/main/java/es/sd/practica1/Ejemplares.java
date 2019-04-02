@@ -16,7 +16,7 @@ public class Ejemplares {
 	private int ejemplaresDisponibles;
 	private int anoAcunacion;
 	private String ciudadAcunacion;
-	private java.sql.Date fechaAdquisicion;
+	private java.sql.Date fechaAdquisicion=fechaAct();
 	private String estadoConservacion="Normal";
 	private String modelo;
 	private String proveedor;

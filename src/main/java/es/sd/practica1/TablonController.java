@@ -141,13 +141,13 @@ public class TablonController {
 	}		
 	
 	@RequestMapping("/consultarEjemplar")
-	public String consult_ejemplar(@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer ejemplaresDisponiblesE,
-			@RequestParam(value="numEjemplares", required=false, defaultValue = "0") Integer anoAcunacionE,
-			@RequestParam(value="numEjemplares", required=false) String ciudadAcunacionE,
-			@RequestParam(value="numEjemplares", required=false) Date fechaAdquisicionE,
-			@RequestParam(value="numEjemplares", required=false) String estadoConservacionE,
-			@RequestParam(value="numEjemplares", required=false) String modeloE,
-			@RequestParam(value="numEjemplares", required=false) String proveedorE,
+	public String consult_ejemplar(@RequestParam(value="ejemplaresDisponiblesE", required=false, defaultValue = "0") Integer ejemplaresDisponiblesE,
+			@RequestParam(value="anoAcunacionE", required=false, defaultValue = "0") Integer anoAcunacionE,
+			@RequestParam(value="ciudadAcunacionE", required=false) String ciudadAcunacionE,
+			@RequestParam(value="fechaAdquisicionE", required=false) Date fechaAdquisicionE,
+			@RequestParam(value="estadoConservacionE", required=false) String estadoConservacionE,
+			@RequestParam(value="modeloE", required=false) String modeloE,
+			@RequestParam(value="proveedorE", required=false) String proveedorE,
 			Model modelCE) {
 				
 		if ( (ejemplaresDisponiblesE==null || ejemplaresDisponiblesE==0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
