@@ -6,16 +6,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioEjemplares extends JpaRepository<Ejemplares, Integer> {
 	
-	Ejemplares findByEjemplaresDisponibles (int ejemplaresDisponibles);
-	Ejemplares findByAnoAcunacion (int anoAcunacion);
-	Ejemplares findByCiudadAcunacion (String ciudadAcunacion);
-	Ejemplares findByFechaAdquisicion (java.sql.Date fechaAdquisicion);
-	Ejemplares findByEstadoConservacion (String estadoConservacion);
+	public List<Ejemplares> findByEjemplaresDisponibles (int ejemplaresDisponibles);
+	public List<Ejemplares> findByAnoAcunacion (int anoAcunacion);
+	public List<Ejemplares> findByCiudadAcunacion (String ciudadAcunacion);
+	public List<Ejemplares> findByFechaAdquisicion (java.sql.Date fechaAdquisicion);
+	public List<Ejemplares> findByEstadoConservacion (String estadoConservacion);
 	
-	Ejemplares findByProveedor (String proveedor);
-	Ejemplares findByModelo (String Modelo);
+	public List<Ejemplares> findByProveedor (String proveedor);
+	public List<Ejemplares> findByModelo (String Modelo);
 	
 
-	List<Ejemplares> findByAnoAcunacionAndCiudadAcunacion (int anoAcunacion, String ciudadAcunacion); 
+	public List<Ejemplares> findByAnoAcunacionAndCiudadAcunacion (int anoAcunacion, String ciudadAcunacion); 
 
 }

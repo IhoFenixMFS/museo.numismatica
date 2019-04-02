@@ -32,11 +32,11 @@ public class TablonController {
 	@PostConstruct
 	private void initModelos() {
 		//Datos para la tabla MODELOS
-		repModelos.save(new Modelos("Doblón español", 1.2, "doblón", 6.77, "oro"));
-		repModelos.save(new Modelos("Patagón de brabante", 2, "patagón", 40, 8.9, "plata"));
-		repModelos.save(new Modelos("Maravedí español", 3, "maravedí", 35, 4.8, "cobre"));
-		repModelos.save(new Modelos("Tetradracma ateniense", 5, "tetradracma", 527, 327.22, "bronce"));
-		repModelos.save(new Modelos("Real español", 1, "real", 3.35, "plata"));
+		repModelos.save(new Modelos("Doblón español", 1, "doblón", 6.77, "oro"));
+		repModelos.save(new Modelos("Patagón de brabante", 1, "patagón", 40, 8.9, "plata"));
+		repModelos.save(new Modelos("Maravedí español", 1, "maravedí", 35, 4.8, "cobre"));
+		repModelos.save(new Modelos("Tetradracma ateniense", 2, "tetradracma", 527, 327.22, "bronce"));
+		repModelos.save(new Modelos("Real español", 5, "real", 3.35, "plata"));
 	}
 	
 	@PostConstruct
@@ -44,8 +44,8 @@ public class TablonController {
 		//Datos para la tabla EJEMPLARES		
 		repEjemplares.save(new Ejemplares(16, "Doblón español", 1634, "Valladolid", "Malo", "Calderilla"));
 		repEjemplares.save(new Ejemplares(3, "Patagón de brabante", 1622, "Segovia", "Normal", "Aurelio"));
-		repEjemplares.save(new Ejemplares(5, "Maravedí español", 1685, "Pontevedra", "Bueno", "Sancho"));
-		repEjemplares.save(new Ejemplares(2, "Tetradracma ateniense", -562, "Atenas", "Cecilia"));
+		repEjemplares.save(new Ejemplares(3, "Maravedí español", 1685, "Pontevedra", "Bueno", "Sancho"));
+		repEjemplares.save(new Ejemplares(3, "Tetradracma ateniense", -562, "Atenas", "Cecilia"));
 		repEjemplares.save(new Ejemplares(8, "Real español", 1767, "Madrid", "Malo", "Amelio"));
 	}
 		

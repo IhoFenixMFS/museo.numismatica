@@ -5,14 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioModelos extends JpaRepository<Modelos, Integer> {
 	
-	Modelos findByNombre (String nombre);
-	Modelos findByValorFacial (double valorFacial);
-	List<Modelos> findByUnidad (String unidad);
-	Modelos findByDiametro (double diametro);
-	Modelos findByPeso (double peso);
-	Modelos findByMetal (String metal);
-	Modelos findByDescripcion (String descripcion);
+	public List<Modelos> findByNombre (String nombre);
+	public List<Modelos> findByValorFacial (double valorFacial);
+	public List<Modelos> findByUnidad (String unidad);
+	public List<Modelos> findByDiametro (double diametro);
+	public List<Modelos> findByPeso (double peso);
+	public List<Modelos> findByMetal (String metal);
+	public List<Modelos> findByDescripcion (String descripcion);
 
-	List<Modelos> findByValorFacialAndUnidad (double valorFacial, String unidad);
+	public List<Modelos> findByValorFacialAndUnidad (double valorFacial, String unidad);
 	
 }
