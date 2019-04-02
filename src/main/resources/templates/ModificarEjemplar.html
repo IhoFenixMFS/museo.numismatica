@@ -17,38 +17,38 @@
 	<h1>Modificar Ejemplar</h1>
 	
 	<h4>Rellena los campos que deseas modificar</h4>
-	<form  method="post">
+	<form th:action="@{'/modificarEjemplar/' + ${ejemplar.id_ejemplares}}" th:method="put">
 	
 		<label for="ejemplaresDisponibles">Ejemplares disponibles:</label>
-			<input type='number' name='ejemplaresDisponibles' placeholder='Numero de ejemplares disponibles' min='0'><br/>
+			<input th:value="${ejemplar.ejemplaresDisponibles}" type='number' name='ejemplaresDisponibles' placeholder='Numero de ejemplares disponibles' min='0'><br/>
 			
 		<label for="anoAcunacion">Año de acuñación: </label>
-			<input type='number' name='anoAcunacion' placeholder='Año de acuñación' max='2019'/><br/>
+			<input th:value="${ejemplar.anoAcunacion}"  type='number' name='anoAcunacion' placeholder='Año de acuñación' max='2019'/><br/>
 			
 		<label for="ciudadAcunacion">Ciudad de acuñación: </label>
-			<input type='text' name='ciudadAcunacion' placeholder='Ciudad acuñación'/><br/>
+			<input th:value="${ejemplar.ciudadAcunacion}" type='text' name='ciudadAcunacion' placeholder='Ciudad acuñación'/><br/>
 			
 		<label for="fechaAdquisicion">Fecha de adquisición: </label>
-			<input type='date' name='fechaAdquisicion'/><br/>
+			<input th:value="${ejemplar.fechaAdquisicion}" type='date' name='fechaAdquisicion'/><br/>
 			
 		<label for="estadoConservacion">Estado de conservación: </label>
-			<select name='estadoConservacion'>
+			<select th:value="${ejemplar.estadoConservacion}" name='estadoConservacion'>
 				<option value='Bueno'>Bueno</option>
 				<option value='Normal'>Normal</option>
 				<option value='Malo'>Malo</option>
 			</select><br/>		
 		
-		<!-- label for="modelo">Modelos: </label>
+		<label for="modelo">Modelos: </label>
 		
-			<select th:field="*{modelos}" required>
-				<option th:each="modelos : ${modelos}" th:value='$modelos.nombre' th:text='$modelos.nombre' th:selected='false'/>
-			</select><br/-->
+			<select name="modelo" required>
+				<option th:each="modelo : ${modelos}" th:value='${modelo.nombre}' th:text='${modelo.nombre}' th:selected='false'/>
+			</select><br/>
 			
-		<!-- label for="proveedor">Proveedor: </label>
+		<label for="proveedor">Proveedor: </label>
 		
 			<select name="proveedor">
-				<option th:each="proveedor : ${proveedor}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
-			</select><br/-->
+				<option th:each="proveedor : ${proveedores}" th:value="${proveedor.nombre}" th:text="${proveedor.nombre}"></option>
+			</select><br/>
 			
 		<input type='submit' name='modificar' value='Modificar'/><br/>
 				

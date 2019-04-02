@@ -2,10 +2,14 @@ package es.sd.practica1;
 
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 
 public interface RepositorioEjemplares extends JpaRepository<Ejemplares, Integer> {
-	
+
+	@Query("SELECT e FROM Ejemplares e WHERE e.id_ejemplares=?1")
+	public Ejemplares findById_ejemplares(Integer id_ejemplar);
+
 	public List<Ejemplares> findByEjemplaresDisponibles (int ejemplaresDisponibles);
 	public List<Ejemplares> findByAnoAcunacion (int anoAcunacion);
 	public List<Ejemplares> findByCiudadAcunacion (String ciudadAcunacion);

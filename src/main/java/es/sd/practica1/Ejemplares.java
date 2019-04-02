@@ -21,6 +21,18 @@ public class Ejemplares {
 	private String modelo;
 	private String proveedor;
 
+	public Ejemplares(int id_ejemplares, int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
+					  Date fecha, String estadoConservacion, String proveedor) {
+
+		this.id_ejemplares = id_ejemplares;
+		this.ejemplaresDisponibles = ejemplaresDisponibles;
+		this.modelo = modelo;
+		this.anoAcunacion = anoAcunacion;
+		this.ciudadAcunacion = ciudadAcunacion;
+		this.fechaAdquisicion = fechaPasada(fecha);
+		this.estadoConservacion = estadoConservacion;
+		this.proveedor = proveedor;
+	}
 	
 	public Ejemplares(int ejemplaresDisponibles, String modelo, int anoAcunacion, String ciudadAcunacion,
 			Date fecha, String estadoConservacion, String proveedor) {

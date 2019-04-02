@@ -69,15 +69,15 @@
 			<td>Telefono</td>
 			<td>Modificar</td>
 		</tr>
-		<th:block th:each="proveedor : ${proveedor}">
+		<th:block th:each="prod : ${proveedor}">
 			<tr>
-				<td><span th:text="${proveedor.cif}"></span></td>
-				<td><span th:text="${proveedor.nombre}"></span></td>
-				<td><span th:text="${proveedor.cp}"></span></td> 
-				<td><span th:text="${proveedor.mail}"></span></td> 
-				<td><span th:text="${proveedor.tlf}"></span></td> 
+				<td><span th:text="${prod.cif}"></span></td>
+				<td><span th:text="${prod.nombre}"></span></td>
+				<td><span th:text="${prod.cp}"></span></td>
+				<td><span th:text="${prod.mail}"></span></td>
+				<td><span th:text="${prod.tlf}"></span></td>
 				<td>
-					<form name="cif" th:value="${proveedor.cif}" th:action="@{'/modificarProveedor/' + ${proveedor.cif}}" method="get">
+					<form name="cif" th:value="${prod.cif}" th:action="@{'/modificarProveedor/' + ${prod.cif}}" method="get">
 						
 						<div class="btn-group">
 							<button class="button">Modificar</button>

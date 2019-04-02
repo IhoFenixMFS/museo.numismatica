@@ -85,18 +85,18 @@
 			<td>Proveedor</td>
 			<td>Modificar</td>
 		</tr>
-		<th:block th:each="ejemplares : ${ejemplares}">
+		<th:block th:each="ejemplar : ${ejemplares}">
 			<tr>
-				<td><span th:text='${ejemplares.id_ejemplares}'></span></td>
-				<td><span th:text="${ejemplares.ejemplaresDisponibles}"></span></td>
-				<td><span th:text="${ejemplares.anoAcunacion}"></span></td> 
-				<td><span th:text="${ejemplares.ciudadAcunacion}"></span></td> 
-				<td><span th:text="${ejemplares.fechaAdquisicion}"></span></td> 
-				<td><span th:text="${ejemplares.estadoConservacion}"></span></td> 
-				<td><span th:text="${ejemplares.modelo}"></span></td> 
-				<td><span th:text="${ejemplares.proveedor}"></span></td>
+				<td><span th:text='${ejemplar.id_ejemplares}'></span></td>
+				<td><span th:text="${ejemplar.ejemplaresDisponibles}"></span></td>
+				<td><span th:text="${ejemplar.anoAcunacion}"></span></td>
+				<td><span th:text="${ejemplar.ciudadAcunacion}"></span></td>
+				<td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+				<td><span th:text="${ejemplar.estadoConservacion}"></span></td>
+				<td><span th:text="${ejemplar.modelo}"></span></td>
+				<td><span th:text="${ejemplar.proveedor}"></span></td>
 				<td>
-					<form th:value="${ejemplares.id_ejemplares}" action="/modificarEjemplar">
+					<form th:value="${ejemplar.id_ejemplares}" th:action="@{'/modificarEjemplar/' + ${ejemplar.id_ejemplares}}">
 						<div class="btn-group">
 							<button class="button">Modificar</button>
 						</div>

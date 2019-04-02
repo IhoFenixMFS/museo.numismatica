@@ -1,6 +1,7 @@
 package es.sd.practica1;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,8 +119,7 @@ public class TablonController {
 		}
 		else if ( (cifP==null || cifP=="") && (nombreP==null || nombreP=="") && (cpP==null || cpP==52081) && (mailP==null || mailP=="") && (tlfP!=null && tlfP!=700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByTlf(tlfP));
-		}		
-		
+		}
 		
 		return "ConsultarProveedor";
 	}	
@@ -340,7 +340,7 @@ public class TablonController {
 		return "Consultar";
 	}
 
-	// PROVEEDOR
+	// MODELO
 	@RequestMapping(value="/modificarModelo/{id}", method=RequestMethod.GET)
 	public String mod_modelo(@PathVariable("id") int id, Model modelMP) {
 		Modelos modelos = repModelos.findById_modelos(id);
@@ -364,17 +364,35 @@ public class TablonController {
 
 		return "Consultar";
 	}
-	
-	@RequestMapping("/modificarModelo")
-	public String mod_modelo(Model modelMM) {
 
-		return "ModificarModelo";
-	}
-	
-	@RequestMapping("/modificarEjemplar")
-	public String mod_ejemplar(Model modelME) {
 
+	// Ejemplar
+	@RequestMapping(value="/modificarEjemplar/{id}", method=RequestMethod.GET)
+	public String mod_ejemplar(@PathVariable("id") int id, Model modelMP) {
+		Ejemplares ejemplares = repEjemplares.findById_ejemplares(id);
+		List<Modelos> modelos = repModelos.findAll();
+		List<Proveedor> proveedores = repProveedor.findAll();
+
+		modelMP.addAttribute("ejemplar", ejemplares);
+		modelMP.addAttribute("modelos", modelos);
+		modelMP.addAttribute("proveedores", proveedores);
 		return "ModificarEjemplar";
+	}
+
+	@RequestMapping(value="/modificarEjemplar/{id}", method=RequestMethod.PUT)
+	public String mod_ejemplar_put(@PathVariable("id") int id, @RequestParam(value="ejemplaresDisponibles", required=false, defaultValue = "0") Integer ejemplaresDisponibles,
+			   @RequestParam(value="anoAcunacion", required=false, defaultValue = "0") Integer anoAcunacion,
+			   @RequestParam(value="ciudadAcunacion", required=false) String ciudadAcunacion,
+			   @RequestParam(value="fechaAdquisicion", required=false) Date fechaAdquisicion,
+			   @RequestParam(value="estadoConservacion", required=false) String estadoConservacion,
+			   @RequestParam(value="modelo", required=false) String modelo,
+			   @RequestParam(value="proveedor", required=false) String proveedor, Model modelMM) {
+
+		if (ejemplaresDisponibles != 0) {
+			repEjemplares.save(new Ejemplares(id, ejemplaresDisponibles,modelo,anoAcunacion,ciudadAcunacion,fechaAdquisicion,estadoConservacion,proveedor));
+		}
+
+		return "Consultar";
 	}
 	
 }
