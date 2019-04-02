@@ -21,7 +21,9 @@ public interface RepositorioModelos extends JpaRepository<Modelos, Integer> {
 	public List<Modelos> findAllByOrderByNombreAsc();
 	public List<Modelos> findAllByOrderByValorFacialAsc();
 	public List<Modelos> findAllByOrderByUnidadAsc();
+	public List<Modelos> findAllByOrderByDiametroAsc();
+	public List<Modelos> findAllByOrderByPesoDesc();
 	public List<Modelos> findAllByOrderByMetalDesc();
-	public List<Modelos> findAllByOrderByNombreDesc();
+	public List<Modelos> findAllByOrderByDescripcionDesc();
 	
 }
