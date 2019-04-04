@@ -8,3 +8,9 @@ deploy:
   keep_history: true
   on:
     branch: master
+    
+ mvn sonar:sonar \
+  -Dsonar.projectKey=IhoFenixMFS_museo.numismatica \
+  -Dsonar.organization=ihofenixmfs-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=f66b71c09d4bffdadacb0ceb1ff53bbe4706a55d
