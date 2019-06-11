@@ -27,52 +27,43 @@
 			<option value='OrdenarMetalDesc'>Metal Descendente</option>
 			<option value='OrdenarDescripcionDesc'>Descripción Descendente</option>	
 		</select>
-		
 		<input type='submit' value='Ordenar'/><br/>
 	</form>
-	
 	<form action="/consultarModelo">
-		<p>Introduzca el nombre de un Modelo:</p>
+		Introduzca el nombre de un Modelo:</br>
 		<input type='text' name='nombreM'/>
 		<input type='submit' value='Buscar'/>
-	</form>	
-		
+	</form>		
 	<form action="/consultarModelo">
-		<p>Introduzca el valor facial de un Modelo:</p>
+		Introduzca el valor facial de un Modelo:</br>
 		<input type='number' step=".01" name='valorFacialM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
-	
 	<form action="/consultarModelo">
-		<p>Introduzca la unidad de un Modelo:</p>
+		Introduzca la unidad de un Modelo:</br>
 		<input type='text' name='unidadM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
-	
 	<form action="/consultarModelo">
-		<p>Introduzca el diámetro de un Modelo:</p>
+		Introduzca el diámetro de un Modelo:</br>
 		<input type='number' step=".01" name='diametroM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
-	
 	<form action="/consultarModelo">
-		<p>Introduzca el peso de un Modelo:</p>
+		Introduzca el peso de un Modelo:</br>
 		<input type='number' step=".01" name='pesoM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
-	
 	<form action="/consultarModelo">
-		<p>Introduzca el metal de un Modelo:</p>
+		Introduzca el metal de un Modelo:</br>
 		<input type='text' name='metalM'/>
 		<input type='submit' value='Buscar'/>
 	</form>	
-	
 	<form action="/consultarModelo">
-		<p>Introduzca la descripción de un Modelo:</p>
-		<input type='text' name='descripcionM'/>
+		Introduzca la descripción de un Modelo:</br>
+		<iput type='text' name='descripcionM'/>
 		<input type='submit' value='Buscar'/>
-	</form>							
-
+	</form>
 	<table border="1">
 		<tr>
 			<td>ID</td>
@@ -82,7 +73,6 @@
 			<td>Diametro</td>
 			<td>Peso</td>
 			<td>Metal</td>
-			
 			<td>Descripcion</td>
 			<td>Modificar</td>
 		</tr>
@@ -106,10 +96,9 @@
 			</tr>
 		</th:block>	
 	</table>
-	
 	<form action="/consultar" method="post">
 		<div class="btn-group">
-		  <button class="button">Volver</button>
+		  <button class="button">Atrás</button>
 		</div>
 	</form>
 
