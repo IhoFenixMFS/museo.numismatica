@@ -1,20 +1,24 @@
-package es.sd.practica1;
+package es.sd.practica1.controllers;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import es.sd.practica1.entidades.Ejemplares;
+import es.sd.practica1.entidades.Modelos;
+import es.sd.practica1.entidades.Proveedor;
+import es.sd.practica1.repositorios.*;
 
 @Controller
 public class TablonController {
 
-	@Autowired 
-	public RepositorioProveedor repProveedor;
-	@Autowired
-	public RepositorioModelos repModelos;
 	@Autowired
 	public RepositorioEjemplares repEjemplares;
+	@Autowired
+	public RepositorioModelos repModelos;
+	@Autowired 
+	public RepositorioProveedor repProveedor;
 	
 	@PostConstruct
 	private void initProveedor() {
@@ -25,7 +29,7 @@ public class TablonController {
 		repProveedor.save(new Proveedor("B0000122A", "Cecilia", 28900, 632147895));
 		repProveedor.save(new Proveedor("B0000312A", "Amelio", 20145, 668794532));
 	}
-	
+
 	@PostConstruct
 	private void initModelos() {
 		//Datos para la tabla MODELOS
@@ -44,8 +48,7 @@ public class TablonController {
 		repEjemplares.save(new Ejemplares(3, "Maravedí español", 1685, "Pontevedra", "Bueno", "Sancho"));
 		repEjemplares.save(new Ejemplares(3, "Tetradracma ateniense", -562, "Atenas", "Cecilia"));
 		repEjemplares.save(new Ejemplares(8, "Real español", 1767, "Madrid", "Malo", "Amelio"));
-	}
-		
+	}	
 	
 	//Páginas de inicio
 	@RequestMapping("/")
@@ -60,8 +63,24 @@ public class TablonController {
 		return base(model);
 	}
 	
+	//CONSULTAS
+	@RequestMapping("/consultar")
+	public String consult(Model modelC) {
+
+		return "Consultar";
+	}
+	
+	//INSERCIONES
+	@RequestMapping("/insertar")
+	public String insert(Model modelI) {
+
+		return "Insertar";
+	}
+	
+	//MODIFICACIONES
+	@RequestMapping("/modificar")
+	public String mod(Model modelM) {
+
+		return "Modificar";
+	}	
 }
-
-
-
-

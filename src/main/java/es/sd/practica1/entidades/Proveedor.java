@@ -1,4 +1,4 @@
-package es.sd.practica1;
+package es.sd.practica1.entidades;
 
 import java.util.*;
 import javax.persistence.*;
@@ -7,6 +7,9 @@ import javax.persistence.*;
 public class Proveedor {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_proveedor;
+	
 	private String cif;
 	private String nombre;
 	private int cp=52080;

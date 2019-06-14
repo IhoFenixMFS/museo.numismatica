@@ -1,7 +1,8 @@
-package es.sd.practica1;
+package es.sd.practica1.repositorios;
 
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import es.sd.practica1.entidades.*;
 
 public interface RepositorioProveedor extends JpaRepository<Proveedor, String> {
 

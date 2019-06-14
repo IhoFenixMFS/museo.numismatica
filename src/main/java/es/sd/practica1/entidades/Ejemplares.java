@@ -1,4 +1,4 @@
-package es.sd.practica1;
+package es.sd.practica1.entidades;
 
 import java.sql.Date;
 import javax.persistence.Entity;
