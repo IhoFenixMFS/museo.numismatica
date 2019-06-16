@@ -83,6 +83,9 @@ public class EjemplaresController {
 		else if ( (ejemplaresDisponiblesE!=null && ejemplaresDisponiblesE!=0) && (anoAcunacionE==null || anoAcunacionE==0) && (ciudadAcunacionE==null || ciudadAcunacionE=="") && (fechaAdquisicionE==null) && (estadoConservacionE!=null || estadoConservacionE!="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
 			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponiblesAndEstadoConservacion(ejemplaresDisponiblesE,estadoConservacionE));
 		}	
+		else if ( (ejemplaresDisponiblesE!=null && ejemplaresDisponiblesE!=0) && (anoAcunacionE!=null && anoAcunacionE!=0) && (ciudadAcunacionE!=null || ciudadAcunacionE!="") && (fechaAdquisicionE==null) && (estadoConservacionE==null || estadoConservacionE=="") && (modeloE==null || modeloE=="") && (proveedorE==null || proveedorE=="") ) {
+			modelCE.addAttribute("ejemplares", repEjemplares.findByEjemplaresDisponiblesAndAnoAcunacionAndCiudadAcunacion(ejemplaresDisponiblesE,anoAcunacionE,ciudadAcunacionE));
+		}	
 		
 		return "ConsultarEjemplar";
 	}

@@ -13,6 +13,7 @@ public interface RepositorioProveedor extends JpaRepository<Proveedor, String> {
 	public List<Proveedor> findByTlf (int tlf);	
 	public List<Proveedor> findByCpAndTlf (int cp, int tlf); 
 	public List<Proveedor> findByNombreAndMail (String nombre, String mail);  
+	public List<Proveedor> findByNombreAndMailAndTlf (String nombre, String mail, int tlf);  
 	
 	public List<Proveedor> findAllByOrderByNombreAsc();
 	public List<Proveedor> findAllByOrderByNombreDesc();

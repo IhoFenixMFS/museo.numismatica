@@ -64,6 +64,9 @@ public class ProveedorController {
 		else if ( (cifP==null || cifP=="") && (nombreP!=null || nombreP!="") && (cpP==null || cpP==52081) && (mailP!=null || mailP!="") && (tlfP==null || tlfP==700000000) ) {
 			modelCP.addAttribute("proveedor", repProveedor.findByNombreAndMail(nombreP,mailP));
 		}
+		else if ( (cifP==null || cifP=="") && (nombreP!=null || nombreP!="") && (cpP==null || cpP==52081) && (mailP!=null || mailP!="") && (tlfP!=null && tlfP!=700000000) ) {
+			modelCP.addAttribute("proveedor", repProveedor.findByNombreAndMailAndTlf(nombreP,mailP,tlfP));
+		}
 		
 		return "ConsultarProveedor";
 	}	
