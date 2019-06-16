@@ -71,6 +71,12 @@ public class ModelosController {
 		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM!=null || descripcionM!="") ) {
 			modelCM.addAttribute("modelos", repModelos.findByDescripcion(descripcionM));
 		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM!=null && valorFacialM!=0) && (unidadM!=null || unidadM!="") && (diametroM==null || diametroM==0) && (pesoM==null || pesoM==0) && (metalM==null || metalM=="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByValorFacialAndUnidad(valorFacialM,unidadM));
+		}
+		else if  ( (nombreM==null || nombreM=="") && (valorFacialM==null || valorFacialM==0) && (unidadM==null || unidadM=="") && (diametroM==null || diametroM==0) && (pesoM!=null && pesoM!=0) && (metalM!=null || metalM!="") && (descripcionM==null || descripcionM=="") ) {
+			modelCM.addAttribute("modelos", repModelos.findByPesoAndMetal(pesoM,metalM));
+		}
 
 		return "ConsultarModelo";
 	}		

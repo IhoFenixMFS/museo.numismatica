@@ -9,6 +9,16 @@ body{
 	font-weight: bold;
 }
 
+button{
+	height:40px;
+	width:150px;
+}
+
+submit{
+	height:40px;
+	width:150px;
+}
+
 #advanced-search-form{
     background-color: #fff;
     max-width: 800px;
